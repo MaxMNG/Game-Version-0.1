@@ -13,6 +13,7 @@ const EFFECTS: Array = [
 	{"id": "ring", "title": "Кольцо", "scene": "res://scenes/effects/ring_background.tscn"},
 	{"id": "matrix", "title": "Матрица", "scene": "res://scenes/effects/matrix_background.tscn"},
 	{"id": "smoke", "title": "Дымка", "scene": "res://scenes/effects/smoke_background.tscn"},
+	{"id": "combo", "title": "Комбо", "scene": "res://scenes/effects/matrix_smoke_background.tscn"},
 ]
 
 ## Запасной вариант, смонтирован пока эффекты не готовы.
@@ -31,12 +32,14 @@ var _current_config: Resource = null
 @onready var _btn_ring: Button = %BtnRing
 @onready var _btn_matrix: Button = %BtnMatrix
 @onready var _btn_smoke: Button = %BtnSmoke
+@onready var _btn_combo: Button = %BtnCombo
 
 
 func _ready() -> void:
 	_btn_ring.pressed.connect(_on_effect_button.bind("ring"))
 	_btn_matrix.pressed.connect(_on_effect_button.bind("matrix"))
 	_btn_smoke.pressed.connect(_on_effect_button.bind("smoke"))
+	_btn_combo.pressed.connect(_on_effect_button.bind("combo"))
 	_save_button.pressed.connect(_on_save_pressed)
 	# Стартуем с самого нового готового эффекта, иначе — запасной вариант.
 	if ResourceLoader.exists(EFFECTS[0]["scene"]):
@@ -178,6 +181,12 @@ func _config_for(effect_id: String) -> Resource:
 	match effect_id:
 		"ring":
 			return Configs.ring
+		"matrix":
+			return Configs.matrix
+		"smoke":
+			return Configs.smoke
+		"combo":
+			return Configs.matrix_smoke
 	return null
 
 
@@ -186,6 +195,12 @@ func _build_panel() -> void:
 	match _current_id:
 		"ring":
 			_build_ring_panel()
+		"matrix":
+			_build_matrix_panel()
+		"smoke":
+			_build_smoke_panel()
+		"combo":
+			_build_combo_panel()
 		_:
 			var lab := Label.new()
 			lab.text = "Нет настроек."
@@ -226,6 +241,94 @@ func _build_ring_panel() -> void:
 			func(c: Color): ring.color_b = c; _apply_current())
 	add_color("Цвет C", ring.color_c,
 			func(c: Color): ring.color_c = c; _apply_current())
+
+
+func _build_matrix_panel() -> void:
+	var matrix: MatrixConfig = Configs.matrix
+	if matrix == null:
+		return
+	add_slider("Ячейка", 8.0, 32.0, 8.0, matrix.cell_size_px,
+			func(v: float): matrix.cell_size_px = v; _apply_current())
+	add_slider("Радиус", 0.05, 0.4, 0.01, matrix.glow_radius,
+			func(v: float): matrix.glow_radius = v; _apply_current())
+	add_slider("Мягкость", 0.5, 5.0, 0.1, matrix.glow_softness,
+			func(v: float): matrix.glow_softness = v; _apply_current())
+	add_slider("Набор", 1.0, 30.0, 0.5, matrix.charge_gain,
+			func(v: float): matrix.charge_gain = v; _apply_current())
+	add_slider("Макс. заряд", 0.2, 3.0, 0.1, matrix.charge_max,
+			func(v: float): matrix.charge_max = v; _apply_current())
+	add_slider("Усиление", 0.0, 3.0, 0.05, matrix.charge_boost,
+			func(v: float): matrix.charge_boost = v; _apply_current())
+	add_slider("Затухание", 0.2, 5.0, 0.1, matrix.charge_decay_rate,
+			func(v: float): matrix.charge_decay_rate = v; _apply_current())
+	add_slider("Мин. заряд", 0.0, 0.5, 0.01, matrix.charge_floor,
+			func(v: float): matrix.charge_floor = v; _apply_current())
+	add_slider("Центр сила", 0.0, 1.0, 0.05, matrix.center_glow_strength,
+			func(v: float): matrix.center_glow_strength = v; _apply_current())
+	add_slider("Центр радиус", 0.1, 0.8, 0.05, matrix.center_glow_radius,
+			func(v: float): matrix.center_glow_radius = v; _apply_current())
+	add_slider("Сглажив.", 1.0, 20.0, 0.5, matrix.cursor_smooth_speed,
+			func(v: float): matrix.cursor_smooth_speed = v; _apply_current())
+	add_slider("Яркость", 0.1, 1.5, 0.05, matrix.brightness,
+			func(v: float): matrix.brightness = v; _apply_current())
+	add_color("Свечение", matrix.color_glow,
+			func(c: Color): matrix.color_glow = c; _apply_current())
+	add_color("Ореол", matrix.color_halo,
+			func(c: Color): matrix.color_halo = c; _apply_current())
+	add_color("Центр", matrix.color_center,
+			func(c: Color): matrix.color_center = c; _apply_current())
+	add_color("Фон", matrix.background_color,
+			func(c: Color): matrix.background_color = c; _apply_current())
+
+
+func _build_smoke_panel() -> void:
+	var smoke: SmokeConfig = Configs.smoke
+	if smoke == null:
+		return
+	add_slider("Масштаб", 1.5, 6.0, 0.1, smoke.noise_scale,
+			func(v: float): smoke.noise_scale = v; _apply_current())
+	add_slider("Октавы", 1.0, 4.0, 1.0, float(smoke.octave_count),
+			func(v: float): smoke.octave_count = int(v); _apply_current())
+	add_slider("Эволюция", 0.0, 0.3, 0.01, smoke.evolution_speed,
+			func(v: float): smoke.evolution_speed = v; _apply_current())
+	add_slider("Варп", 0.0, 1.5, 0.05, smoke.warp_amount,
+			func(v: float): smoke.warp_amount = v; _apply_current())
+	add_slider("Контраст", 1.0, 4.0, 0.1, smoke.noise_contrast,
+			func(v: float): smoke.noise_contrast = v; _apply_current())
+	add_slider("Гравитация", 0.0, 1.0, 0.05, smoke.gravity_strength,
+			func(v: float): smoke.gravity_strength = v; _apply_current())
+	add_slider("Слой 1", 0.0, 1.0, 0.05, smoke.layer1_strength,
+			func(v: float): smoke.layer1_strength = v; _apply_current())
+	add_slider("Слой 2", 0.0, 1.0, 0.05, smoke.layer2_strength,
+			func(v: float): smoke.layer2_strength = v; _apply_current())
+	add_slider("Интенсивн.", 0.0, 1.0, 0.05, smoke.accent_intensity,
+			func(v: float): smoke.accent_intensity = v; _apply_current())
+	add_slider("Виньетка", 0.0, 1.0, 0.05, smoke.vignette_strength,
+			func(v: float): smoke.vignette_strength = v; _apply_current())
+	add_slider("Радиус курс.", 0.05, 0.5, 0.01, smoke.cursor_radius,
+			func(v: float): smoke.cursor_radius = v; _apply_current())
+	add_slider("Завихрение", 0.0, 1.5, 0.05, smoke.cursor_swirl,
+			func(v: float): smoke.cursor_swirl = v; _apply_current())
+	add_slider("Яркость", 0.1, 1.5, 0.05, smoke.brightness,
+			func(v: float): smoke.brightness = v; _apply_current())
+	add_color("Фон", smoke.background_color,
+			func(c: Color): smoke.background_color = c; _apply_current())
+	add_color("Слой 1", smoke.layer1_color,
+			func(c: Color): smoke.layer1_color = c; _apply_current())
+	add_color("Слой 2", smoke.layer2_color,
+			func(c: Color): smoke.layer2_color = c; _apply_current())
+
+
+func _build_combo_panel() -> void:
+	var combo: MatrixSmokeConfig = Configs.matrix_smoke
+	if combo == null:
+		return
+	var hint := Label.new()
+	hint.text = "Матрица снизу, дым сверху.\nСлои настраиваются\nна вкладках 2 и 3."
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_rows.add_child(hint)
+	add_slider("Дым в комбо", 0.0, 1.0, 0.05, combo.smoke_amount,
+			func(v: float): combo.smoke_amount = v; _apply_current())
 
 
 ## Перечитать конфиг в шейдер смонтированного эффекта.

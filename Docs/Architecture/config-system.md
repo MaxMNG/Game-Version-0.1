@@ -34,3 +34,12 @@
 хранится в CSV в папке `Content/` (корень репозитория) и конвертируется в `.tres`
 скриптом `Tools/convert_content.py`. Появится на этапе прототипа —
 см. `Docs/Prototype/plan.md` и спецификации в `Docs/Prototype/`.
+
+## Связка «лаборатория → игра» (фон)
+
+Dev-сцена `BackgroundLab` (`scenes/dev/background_lab.tscn`) — пульт настройки
+фонов: переключение вариантов, живые слайдеры, кнопка Save. Save пишет через
+`ResourceSaver` в `resources/configs/matrix.tres` / `smoke.tres` /
+`matrix_smoke.tres` — те же файлы, которые автолоад `Configs` загружает
+при старте игры. Отдельный перенос настроек не нужен: настроил в лаборатории,
+нажал Save, перезапустил игру — фон в игре обновился.

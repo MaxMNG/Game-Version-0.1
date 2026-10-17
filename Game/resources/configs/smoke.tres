@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SmokeConfig" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/smoke_config.gd" id="1_smoke"]
+
+[resource]
+script = ExtResource("1_smoke")
+noise_scale = 6.0
+octave_count = 4
+evolution_speed = 0.08
+warp_amount = 1.5
+noise_contrast = 1.0
+gravity_strength = 0.8
+layer1_strength = 0.3
+layer2_strength = 0.3
+vignette_strength = 1.0
+cursor_radius = 0.14
+cursor_swirl = 0.65
+layer1_color = Color(0.37223816, 0.43890038, 0.80078125, 1)
+layer2_color = Color(0.5307007, 0.6895084, 0.91796875, 1)
+accent_intensity = 0.2
+brightness = 1.5

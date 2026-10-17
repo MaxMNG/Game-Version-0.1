@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MatrixConfig" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/matrix_config.gd" id="1_matrix"]
+
+[resource]
+script = ExtResource("1_matrix")
+cell_size_px = 8.0
+glow_radius = 0.15000000000000002
+glow_softness = 5.0
+charge_gain = 18.5
+charge_max = 0.7
+charge_decay_rate = 5.0
+charge_boost = 1.85
+cursor_smooth_speed = 20.0
+color_glow = Color(0.6, 0.79375005, 1, 1)
+color_halo = Color(8.826238e-05, 0.00016380934, 0.00079500925, 0)
+background_color = Color(0.0029296875, 0.011718753, 0.046875, 1)
+color_center = Color(0.51509535, 0.9161497, 1.619754, 1)
+center_glow_strength = 0.2
+center_glow_radius = 0.25
+charge_floor = 0.2
+brightness = 0.7999999999999999
