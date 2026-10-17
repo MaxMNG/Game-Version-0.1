@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BalanceConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/balance_config.gd" id="1_balance"]
+
+[resource]
+script = ExtResource("1_balance")
+trust_start_value = 0
+trust_min = -5
+trust_max = 5
+wipes_per_run_limit = 10

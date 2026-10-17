@@ -10,3 +10,21 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Obsidian
+# Настройки и кэш Obsidian-хранилища не коммитим
+.obsidian/
+
+### Godot 4
+# Служебная папка движка (кэш импорта, метаданные)
+.godot/
+
+# Временные файлы Godot
+*.tmp
+
+# Автогенерируемые переводы из CSV
+*.translation
+
+# Экспортные сборки игры
+builds/
+export/
