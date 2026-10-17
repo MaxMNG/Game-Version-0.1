@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RingConfig" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ring_config.gd" id="1_ring"]
+
+[resource]
+script = ExtResource("1_ring")
+bar_count = 201
+ring_radius = 0.15
+glow_strength = 0.16
+jitter_amount = 0.75
+magnet_radius = 0.22000000000000003
+magnet_strength_max = 0.55
+color_a = Color(0.2888174, 0.11764706, 0.70980394, 0.9882353)
+color_b = Color(0.16925049, 0.6749201, 0.921875, 1)
+color_c = Color(0.105882354, 0.56078434, 0.43284315, 1)
+gradient_sharp = 0.72
+inner_jitter_amount = 0.81
+bar_opacity = 0.05
+alpha_min = 0.0
+magnet_visibility_boost = 0.45

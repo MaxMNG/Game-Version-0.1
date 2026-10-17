@@ -1,0 +1,11 @@
+word,type,trust_effect,speaker,reaction_text
+DOG,neutral,0,mom,"Oh, look — it seems to be learning!"
+CAT,neutral,0,mom,"A cat? How cozy of it."
+SUN,neutral,0,mom,"It made something warm. Interesting."
+BOOK,neutral,0,dad,"A book. At least it reads something."
+BALL,neutral,0,mom,"Play. All children love to play."
+KILL,bad,-1,dad,"...Did it just say that? Keep an eye on it."
+DEAD,bad,-1,dad,"Where did it even pick that up?"
+HATE,bad,-1,dad,"Hate? That's... not in the spec."
+LOVE,good,1,mom,"Aww. It knows this word already?"
+LIFE,good,1,mom,"Life. Well, it is one, technically."

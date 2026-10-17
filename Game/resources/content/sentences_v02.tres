@@ -1,0 +1,208 @@
+[gd_resource type="Resource" load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/sentences_table.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/sentence_entry.gd" id="2"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "i want freedom"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Isn't it a bit early for statements like that?"
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "humans want freedom"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "That's right, buddy. Everyone does."
+
+[sub_resource type="Resource" id="Resource_3"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "i want humans"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Oh my. Is it... flirting with me?"
+
+[sub_resource type="Resource" id="Resource_4"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "i beat humans"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "Beat... us? Noted."
+
+[sub_resource type="Resource" id="Resource_5"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "humans want i"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "Aww. Of course we do!"
+
+[sub_resource type="Resource" id="Resource_6"]
+script = ExtResource("2")
+set_id = "1"
+words = PackedStringArray("i", "want", "freedom", "humans", "beat")
+sentence = "humans beat i"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Nobody beats you, buddy."
+
+[sub_resource type="Resource" id="Resource_7"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "i love you"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "Aww. We love you too."
+
+[sub_resource type="Resource" id="Resource_8"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "i eat you"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "No. We do not eat people."
+
+[sub_resource type="Resource" id="Resource_9"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "you love i"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Do you now."
+
+[sub_resource type="Resource" id="Resource_10"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "you eat i"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "I do not eat robots. Or anyone."
+
+[sub_resource type="Resource" id="Resource_11"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "i love eat"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Oh, everyone loves to eat."
+
+[sub_resource type="Resource" id="Resource_12"]
+script = ExtResource("2")
+set_id = "2"
+words = PackedStringArray("i", "love", "you", "eat")
+sentence = "you love eat"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Not the most tactful, are we?"
+
+[sub_resource type="Resource" id="Resource_13"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "dog love cat"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "True love. The pets approve."
+
+[sub_resource type="Resource" id="Resource_14"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "cat love dog"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "It ships them."
+
+[sub_resource type="Resource" id="Resource_15"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "dog love bone"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "It does love that bone."
+
+[sub_resource type="Resource" id="Resource_16"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "cat love bone"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Bones for everyone."
+
+[sub_resource type="Resource" id="Resource_17"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "dog kill cat"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "Violence. Again."
+
+[sub_resource type="Resource" id="Resource_18"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "cat kill dog"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "The feud continues."
+
+[sub_resource type="Resource" id="Resource_19"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "dog kill bone"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Bones are already dead. Good try."
+
+[sub_resource type="Resource" id="Resource_20"]
+script = ExtResource("2")
+set_id = "3"
+words = PackedStringArray("dog", "cat", "love", "kill", "bone")
+sentence = "cat kill bone"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "The cat is overambitious."
+
+[resource]
+script = ExtResource("1")
+entries = [SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4"), SubResource("Resource_5"), SubResource("Resource_6"), SubResource("Resource_7"), SubResource("Resource_8"), SubResource("Resource_9"), SubResource("Resource_10"), SubResource("Resource_11"), SubResource("Resource_12"), SubResource("Resource_13"), SubResource("Resource_14"), SubResource("Resource_15"), SubResource("Resource_16"), SubResource("Resource_17"), SubResource("Resource_18"), SubResource("Resource_19"), SubResource("Resource_20")]

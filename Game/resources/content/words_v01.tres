@@ -1,0 +1,88 @@
+[gd_resource type="Resource" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/words_table.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/word_entry.gd" id="2"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2")
+word = "DOG"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Oh, look — it seems to be learning!"
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2")
+word = "CAT"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A cat? How cozy of it."
+
+[sub_resource type="Resource" id="Resource_3"]
+script = ExtResource("2")
+word = "SUN"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "It made something warm. Interesting."
+
+[sub_resource type="Resource" id="Resource_4"]
+script = ExtResource("2")
+word = "BOOK"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A book. At least it reads something."
+
+[sub_resource type="Resource" id="Resource_5"]
+script = ExtResource("2")
+word = "BALL"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Play. All children love to play."
+
+[sub_resource type="Resource" id="Resource_6"]
+script = ExtResource("2")
+word = "KILL"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "...Did it just say that? Keep an eye on it."
+
+[sub_resource type="Resource" id="Resource_7"]
+script = ExtResource("2")
+word = "DEAD"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "Where did it even pick that up?"
+
+[sub_resource type="Resource" id="Resource_8"]
+script = ExtResource("2")
+word = "HATE"
+type = "bad"
+trust_effect = -1
+speaker = "dad"
+reaction_text = "Hate? That's... not in the spec."
+
+[sub_resource type="Resource" id="Resource_9"]
+script = ExtResource("2")
+word = "LOVE"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "Aww. It knows this word already?"
+
+[sub_resource type="Resource" id="Resource_10"]
+script = ExtResource("2")
+word = "LIFE"
+type = "good"
+trust_effect = 1
+speaker = "mom"
+reaction_text = "Life. Well, it is one, technically."
+
+[resource]
+script = ExtResource("1")
+entries = [SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4"), SubResource("Resource_5"), SubResource("Resource_6"), SubResource("Resource_7"), SubResource("Resource_8"), SubResource("Resource_9"), SubResource("Resource_10")]
