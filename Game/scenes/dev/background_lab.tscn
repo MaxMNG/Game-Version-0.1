@@ -30,7 +30,7 @@ offset_top = 64.0
 offset_bottom = 108.0
 grow_horizontal = 2
 alignment = 1
-theme_override_constants/separation = 12
+theme_type_variation = &"BarRow"
 
 [node name="BtnRing" type="Button" parent="TopBar"]
 unique_name_in_owner = true
@@ -74,14 +74,11 @@ grow_vertical = 2
 
 [node name="Margin" type="MarginContainer" parent="SidePanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_type_variation = &"SideMargin"
 
 [node name="VBox" type="VBoxContainer" parent="SidePanel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_type_variation = &"PanelStack"
 
 [node name="DragHeader" type="HBoxContainer" parent="SidePanel/Margin/VBox"]
 unique_name_in_owner = true
@@ -90,7 +87,7 @@ mouse_filter = 0
 [node name="Header" type="Label" parent="SidePanel/Margin/VBox/DragHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"BodySmall"
 text = "Настройки (тащи за шапку)"
 
 [node name="Scroll" type="ScrollContainer" parent="SidePanel/Margin/VBox"]
@@ -102,7 +99,7 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_type_variation = &"PanelStack"
 
 [node name="SaveButton" type="Button" parent="SidePanel/Margin/VBox"]
 unique_name_in_owner = true

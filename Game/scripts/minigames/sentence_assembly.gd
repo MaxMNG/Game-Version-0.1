@@ -53,7 +53,7 @@ func _build_ui() -> void:
 	_banner_label.offset_top = 120.0
 	_banner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_banner_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_banner_label.add_theme_font_size_override("font_size", 36)
+	_banner_label.theme_type_variation = &"BodyLarge"
 	_banner_label.text = Configs.version2.banner_text
 	add_child(_banner_label)
 

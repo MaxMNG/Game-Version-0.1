@@ -13,7 +13,7 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_preset(Control.PRESET_CENTER)
 	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	add_theme_font_size_override("font_size", 64)
+	theme_type_variation = &"HeadingLabel"
 
 
 func launch(ver_text: String) -> void:
@@ -48,4 +48,4 @@ func _move_to_header() -> void:
 
 
 func _shrink() -> void:
-	add_theme_font_size_override("font_size", 24)
+	theme_type_variation = &"Body"

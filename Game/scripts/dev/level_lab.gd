@@ -183,7 +183,7 @@ func _section(title: String) -> void:
 	header.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var body := VBoxContainer.new()
-	body.add_theme_constant_override("separation", 8)
+	body.theme_type_variation = &"TightStack"
 	_rows.add_child(header)
 	_rows.add_child(body)
 	header.pressed.connect(_on_section_toggled.bind(body, header, title))
@@ -204,7 +204,7 @@ func _target() -> VBoxContainer:
 func add_slider(label_text: String, min_v: float, max_v: float, step_v: float,
 		initial: float, on_changed: Callable) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	row.theme_type_variation = &"TightRow"
 	var lab := Label.new()
 	lab.text = label_text
 	lab.custom_minimum_size = Vector2(96, 0)

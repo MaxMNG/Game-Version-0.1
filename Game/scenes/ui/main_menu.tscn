@@ -19,12 +19,12 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="Center"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_type_variation = &"TitleStack"
 alignment = 1
 
 [node name="LogoLabel" type="Label" parent="Center/VBox"]
 unique_name_in_owner = true
-theme_override_font_sizes/font_size = 96
+theme_type_variation = &"TitleLabel"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "VERSION 0.1"
@@ -33,7 +33,7 @@ text = "VERSION 0.1"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 36
+theme_type_variation = &"PrimaryButton"
 text = "START GAME"
 
 [node name="AlphaLabel" type="Label" parent="."]
@@ -47,7 +47,7 @@ offset_right = -16.0
 offset_bottom = -12.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
+theme_type_variation = &"Caption"
 modulate = Color(1, 1, 1, 0.35)
 layout_direction = 2
 text = "alpha"

@@ -39,7 +39,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="PanelBox" type="VBoxContainer" parent="Panel"]
-theme_override_constants/separation = 10
+theme_type_variation = &"PanelStack"
 
 [node name="DragHeader" type="HBoxContainer" parent="Panel/PanelBox"]
 unique_name_in_owner = true
@@ -48,7 +48,7 @@ mouse_filter = 0
 [node name="Title" type="Label" parent="Panel/PanelBox/DragHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"BodySmall"
 text = "Кат-сцены (тащи за шапку)"
 
 [node name="SceneOption" type="OptionButton" parent="Panel/PanelBox"]
@@ -62,7 +62,7 @@ text = "Финал 0.2→0.3 (апгрейд)"
 
 [node name="TransportRow" type="HBoxContainer" parent="Panel/PanelBox"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_type_variation = &"TightRow"
 
 [node name="PlayButton" type="Button" parent="Panel/PanelBox/TransportRow"]
 unique_name_in_owner = true
@@ -101,7 +101,7 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_type_variation = &"PanelStack"
 
 [node name="TmlHeader" type="Button" parent="Panel/PanelBox/Scroll/PanelRows"]
 unique_name_in_owner = true
@@ -112,7 +112,7 @@ text = "▼ Тайминги"
 [node name="TimingRows" type="VBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_type_variation = &"TightStack"
 
 [node name="LinesHeader" type="Button" parent="Panel/PanelBox/Scroll/PanelRows"]
 unique_name_in_owner = true
@@ -123,7 +123,7 @@ text = "▼ Реплики (таймлайн)"
 [node name="LinesBody" type="VBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_type_variation = &"CompactStack"
 
 [node name="LinesList" type="ItemList" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
 unique_name_in_owner = true
@@ -155,7 +155,7 @@ step = 0.1
 
 [node name="LinesRow" type="HBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_type_variation = &"TightRow"
 
 [node name="AddLine" type="Button" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody/LinesRow"]
 unique_name_in_owner = true

@@ -99,7 +99,7 @@ func _section(title: String) -> void:
 	header.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var body := VBoxContainer.new()
-	body.add_theme_constant_override("separation", 8)
+	body.theme_type_variation = &"TightStack"
 	_rows.add_child(header)
 	_rows.add_child(body)
 	header.pressed.connect(_on_section_toggled.bind(body, header, title))
@@ -130,11 +130,11 @@ func _on_save_pressed() -> void:
 func add_slider(label_text: String, min_v: float, max_v: float, step_v: float,
 		initial: float, on_changed: Callable) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	row.theme_type_variation = &"TightRow"
 	row.custom_minimum_size = Vector2(0, 32)
 	var lab := Label.new()
 	lab.text = label_text
-	lab.add_theme_font_size_override("font_size", 16)
+	lab.theme_type_variation = &"Caption"
 	lab.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	lab.custom_minimum_size = Vector2(118, 0)
 	var slider := HSlider.new()
@@ -147,7 +147,7 @@ func add_slider(label_text: String, min_v: float, max_v: float, step_v: float,
 	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var val := Label.new()
 	val.custom_minimum_size = Vector2(52, 0)
-	val.add_theme_font_size_override("font_size", 16)
+	val.theme_type_variation = &"Caption"
 	val.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	val.text = _format_value(initial, step_v)
 	slider.value_changed.connect(_on_slider_changed.bind(val, step_v, on_changed))
@@ -160,11 +160,11 @@ func add_slider(label_text: String, min_v: float, max_v: float, step_v: float,
 ## Добавить в панель строку-выбор цвета (для живых настроек эффекта).
 func add_color(label_text: String, initial: Color, on_changed: Callable) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	row.theme_type_variation = &"TightRow"
 	row.custom_minimum_size = Vector2(0, 32)
 	var lab := Label.new()
 	lab.text = label_text
-	lab.add_theme_font_size_override("font_size", 16)
+	lab.theme_type_variation = &"Caption"
 	lab.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	lab.custom_minimum_size = Vector2(118, 0)
 	lab.size_flags_horizontal = Control.SIZE_EXPAND_FILL

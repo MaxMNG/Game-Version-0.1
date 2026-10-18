@@ -45,6 +45,7 @@ func _build_intro_layers() -> void:
 	_square_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	_square_label.offset_top = 16.0
 	_square_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# Исключение K3: глиф интро ■ — одноразовый размер, в шкалу темы не входит.
 	_square_label.add_theme_font_size_override("font_size", 32)
 	_square_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_square_label.text = "■"
@@ -53,7 +54,7 @@ func _build_intro_layers() -> void:
 	_os_label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_os_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_os_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_os_label.add_theme_font_size_override("font_size", 24)
+	_os_label.theme_type_variation = &"Body"
 	_os_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_os_label.text = ""
 	add_child(_os_label)

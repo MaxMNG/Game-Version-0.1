@@ -7,13 +7,10 @@ custom_minimum_size = Vector2(900, 0)
 script = ExtResource("1_bubble")
 
 [node name="Margin" type="MarginContainer" parent="."]
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
+theme_type_variation = &"BubbleMargin"
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
-theme_override_constants/separation = 6
+theme_type_variation = &"CompactStack"
 
 [node name="SpeakerLabel" type="Label" parent="Margin/VBox"]
 unique_name_in_owner = true

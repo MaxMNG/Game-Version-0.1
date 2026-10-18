@@ -1,0 +1,24 @@
+[gd_resource type="Theme" format=3]
+
+[resource]
+BarRow/constants/separation = 12
+Body/font_sizes/font_size = 24
+BodyLarge/font_sizes/font_size = 36
+BodySmall/font_sizes/font_size = 20
+BubbleMargin/constants/margin_bottom = 12
+BubbleMargin/constants/margin_left = 16
+BubbleMargin/constants/margin_right = 16
+BubbleMargin/constants/margin_top = 12
+Caption/font_sizes/font_size = 16
+CompactStack/constants/separation = 6
+HeadingLabel/font_sizes/font_size = 64
+PanelStack/constants/separation = 10
+PrimaryButton/font_sizes/font_size = 36
+SideMargin/constants/margin_bottom = 12
+SideMargin/constants/margin_left = 12
+SideMargin/constants/margin_right = 12
+SideMargin/constants/margin_top = 12
+TightRow/constants/separation = 8
+TightStack/constants/separation = 8
+TitleLabel/font_sizes/font_size = 96
+TitleStack/constants/separation = 40
