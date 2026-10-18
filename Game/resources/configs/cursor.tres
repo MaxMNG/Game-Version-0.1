@@ -10,3 +10,5 @@ dot_radius = 3.0
 hover_scale = 1.4
 color_normal = Color(1, 1, 1, 0.9)
 color_hover = Color(0.4, 1, 0.4, 1)
+ripple_duration = 0.35
+ripple_radius = 42.0

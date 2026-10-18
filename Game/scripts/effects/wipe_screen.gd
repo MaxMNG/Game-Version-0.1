@@ -1,9 +1,8 @@
 class_name WipeScreen
-extends Control
-## Экран стирания: затухание, реплика dad, рестарт версии 0.2.
+extends BaseCutscene
+## Экран стирания: затухание, реплика dad, рестарт версии.
 ##
 ## Доверие не сбрасывается — только счётчики мини-игры (новая сцена версии).
-## Клик/Space пропускает ожидание.
 
 var _phase: int = 0
 var _elapsed: float = 0.0
@@ -13,8 +12,7 @@ var _elapsed: float = 0.0
 
 
 func _ready() -> void:
-	# Клики пропускаем в _unhandled_input: корень не должен их съедать.
-	mouse_filter = MOUSE_FILTER_IGNORE
+	super._ready()
 	_fade.color = Color(0, 0, 0, 0)
 	_fade.visible = true
 	var tween: Tween = create_tween()
@@ -29,21 +27,19 @@ func _process(delta: float) -> void:
 			_finish()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	var advance: bool = false
-	if event is InputEventMouseButton:
-		var mb: InputEventMouseButton = event as InputEventMouseButton
-		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
-			advance = true
-	if event is InputEventKey:
-		var ke: InputEventKey = event as InputEventKey
-		if ke.pressed and not ke.echo and (ke.keycode == KEY_SPACE or ke.keycode == KEY_ENTER):
-			advance = true
-	if advance:
-		if _dialogue.is_playing():
-			_dialogue.skip_current()
-		elif _phase == 1:
-			_finish()
+func _advance() -> void:
+	if _dialogue.is_playing():
+		_dialogue.skip_current()
+	elif _phase == 1:
+		_finish()
+
+
+func skip_all() -> void:
+	if _is_done:
+		return
+	_dialogue.stop()
+	_finish()
+	super.skip_all()
 
 
 func _on_fade_done() -> void:

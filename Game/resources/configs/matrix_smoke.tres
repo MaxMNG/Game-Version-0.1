@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_compo")
 smoke_amount = 0.3
+show_matrix = true
+show_smoke = true

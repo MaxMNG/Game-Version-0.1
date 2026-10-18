@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/dev/background_lab.gd" id="1_lab"]
 [ext_resource type="Script" path="res://scripts/dev/cursor_marker.gd" id="2_marker"]
+[ext_resource type="Script" path="res://scripts/ui/custom_cursor.gd" id="3_cursor"]
 
 [node name="BackgroundLab" type="Control"]
 anchors_preset = 15
@@ -56,12 +57,15 @@ layout_mode = 2
 text = "4. Комбо"
 
 [node name="SidePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 100
 layout_mode = 1
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -340.0
+offset_left = -356.0
 offset_top = 72.0
 offset_right = -16.0
 offset_bottom = -16.0
@@ -77,16 +81,28 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBox" type="VBoxContainer" parent="SidePanel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
 
-[node name="Header" type="Label" parent="SidePanel/Margin/VBox"]
+[node name="DragHeader" type="HBoxContainer" parent="SidePanel/Margin/VBox"]
+unique_name_in_owner = true
+mouse_filter = 0
+
+[node name="Header" type="Label" parent="SidePanel/Margin/VBox/DragHeader"]
 layout_mode = 2
-text = "Настройки"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Настройки (тащи за шапку)"
 
-[node name="SettingsRows" type="VBoxContainer" parent="SidePanel/Margin/VBox"]
+[node name="Scroll" type="ScrollContainer" parent="SidePanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SettingsRows" type="VBoxContainer" parent="SidePanel/Margin/VBox/Scroll"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 6
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
 
 [node name="SaveButton" type="Button" parent="SidePanel/Margin/VBox"]
 unique_name_in_owner = true
@@ -120,3 +136,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_marker")
+
+[node name="Cursor" type="Control" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_cursor")

@@ -16,3 +16,7 @@ extends Resource
 @export_group("Стирание")
 ## Сколько стираний версии допускается за один трай до полного стирания.
 @export var wipes_per_run_limit: int = 10
+
+@export_group("Индикатор")
+## Сколько секунд видна дельта доверия у смайла.
+@export var trust_delta_duration: float = 1.5

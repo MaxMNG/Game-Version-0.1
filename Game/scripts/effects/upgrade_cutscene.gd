@@ -1,10 +1,10 @@
 class_name UpgradeCutscene
-extends Control
+extends BaseCutscene
 ## Кат-сцена апгрейда: диалог → сжатие экрана в точку → вспышка → переход.
 ##
 ## Набор реплик и целевое состояние выбираются по Game.upgrade_is_final:
 ## false — 0.1 → 0.2, true — 0.2 → 0.3 (заглушка финала прототипа).
-## Клик/Space пропускает текущий этап.
+## Клик/Space — шаг диалога, hold SPACE — полный скип (база).
 
 var _phase: int = 0
 
@@ -14,8 +14,7 @@ var _phase: int = 0
 
 
 func _ready() -> void:
-	# Клики пропускаем в _unhandled_input: корень не должен их съедать.
-	mouse_filter = MOUSE_FILTER_IGNORE
+	super._ready()
 	_shrink_rect.visible = false
 	_shrink_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_dialogue.queue_finished.connect(_on_dialogue_done)
@@ -26,23 +25,22 @@ func _ready() -> void:
 	_phase = 1
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _phase != 1:
-		return
-	var advance: bool = false
-	if event is InputEventMouseButton:
-		var mb: InputEventMouseButton = event as InputEventMouseButton
-		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
-			advance = true
-	if event is InputEventKey:
-		var ke: InputEventKey = event as InputEventKey
-		if ke.pressed and not ke.echo and (ke.keycode == KEY_SPACE or ke.keycode == KEY_ENTER):
-			advance = true
-	if advance and _dialogue.is_playing():
+func _advance() -> void:
+	if _phase == 1 and _dialogue.is_playing():
 		_dialogue.skip_current()
 
 
+func skip_all() -> void:
+	if _is_done:
+		return
+	_dialogue.stop()
+	_on_dialogue_done()
+	super.skip_all()
+
+
 func _on_dialogue_done() -> void:
+	if _phase != 1:
+		return
 	_phase = 2
 	_play_shrink()
 

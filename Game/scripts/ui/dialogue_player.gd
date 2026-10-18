@@ -83,7 +83,16 @@ func _play_next() -> void:
 		queue_finished.emit()
 		return
 	var line: DialogueLine = _queue[_current]
+	_align_bubble(line.speaker_id)
 	_bubble.show_line(line.speaker_id, line.text)
+
+
+## Зоны комментариев: мама слева, папа справа.
+func _align_bubble(speaker_id: StringName) -> void:
+	if String(speaker_id) == "dad":
+		_bubble.size_flags_horizontal = Control.SIZE_SHRINK_END
+	else:
+		_bubble.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 
 
 func _on_bubble_line_finished() -> void:

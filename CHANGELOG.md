@@ -6,6 +6,40 @@
 
 ### Добавлено
 
+- Доработка по новому GDD (сессия 2026-10-18, Этап A–B1):
+  - MCP godot-ai: клон в `F:/GODOT/MCP/godot-ai`, addon `Game/addons/godot_ai`,
+    плагин включён, `opencode.json` → `python -m godot_ai` (D17).
+  - `CommentConfig`/`comment.tres` + tint баблов mom/dad; Trust-дельта
+    (`+N`/`-N` затухание, `balance.trust_delta_duration`); `DebugConfig`/`debug.tres`
+    + `DebugStrip` в `Main.tscn` (F3 toggle, state/trust/fps).
+  - `BaseCutscene` (клик-шаг, hold SPACE 2.5с, хинт, прячет курсор) +
+    `CutsceneConfig.skip_*`; `UpgradeCutscene`/`WipeScreen` переведены на базу;
+    `Intro` переписан (маска → тьма 2с → звезда + шарик → пауза → диалог сверху →
+    сверхновая → VERSION_1, `IntroConfig` расширен).
+  - GameIntro в меню (квадрат → текст ОС → фейд → `VERSION ` быстро + `0.1`
+    медленно с паузами → кнопка + курсор, `MenuConfig` расширен);
+    `LevelTitle` для запуска версий (0.1/0.2).
+  - Контент: `words_v01.csv` — 30 нейтральных слов; `sentences_v02.csv` —
+    5 наборов из GDD (23 фразы); конвертер чистый.
+  - Механики: 0.1 без CONFIRM/CLEAR (облако + вращение, спавн по одному,
+    линии `Line2D` + магнит, автосборка, провал на любом мусоре, история,
+    10 утешений); 0.2 облаком (вылет по одному, клик в центр, возврат хвоста,
+    авто-проверка, провал порядка 1 из 3, квакозябры `gibberish_words`).
+  - Звук: `AudioConfig`/`audio.tres`, автолоад `Audio` (процедурные
+    click/success/fail + `start_music(v01/v02)` плейсхолдер, хуки в 0.1/0.2);
+    DAICE упакован (см. `assets/audio/README.md`), fallback CC0.
+  - Фон 0.2: `ScanlineConfig`/`scanline.tres` + шейдер + `ScanlineBackground`,
+    слой в сцене 0.2. Live-проверки через godot-ai на каждом этапе.
+  - Этап C: `cutscene_lab` (превью + тайминги + реплики + Save),
+    `level_lab` (Version-переключатель + группы Облако/Правила/Сканлайн/
+    Комментарии + Save). Live: обе лабы открываются, ошибок нет.
+  - Этап G-добавки: glow связей, shake сверхновой, click-ripple курсора.
+  - Этап H: полный цикл меню → интро → 0.1 → апгрейд → 0.2 через godot-ai
+    со скриншотами (ошибок игры нет), импорт/дым чистые.
+  - Этап I (ревью ГДД): реплики апгрейда по новому ГДД, Trust −100..+100,
+    зоны мама-слева/папа-справа, перелёт слова в историю.
+  - Этап J (редакторы+Xhigh): live-применение параметров, курсор во всех лабах,
+    фон + вкл/выкл слоёв в редакторе уровней, плавающие панели с секциями.
 - Этап 1 «Прототип» завершён за один заход (шаги 2–9 плана):
   - Конфиги `menu`, `dialogue`, `intro`, `version1`, `version2`, `cutscene`, `wipe`
     в `Game/resources/configs/` (+ поля в автолоаде `Configs`).

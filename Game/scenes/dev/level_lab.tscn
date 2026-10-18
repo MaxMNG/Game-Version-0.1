@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/dev/level_lab.gd" id="1_lab"]
+[ext_resource type="Script" path="res://scripts/ui/custom_cursor.gd" id="2_cursor"]
+
+[node name="LevelLab" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lab")
+
+[node name="PreviewSlot" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 100
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -476.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PanelBox" type="VBoxContainer" parent="Panel"]
+theme_override_constants/separation = 10
+
+[node name="DragHeader" type="HBoxContainer" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+mouse_filter = 0
+
+[node name="Title" type="Label" parent="Panel/PanelBox/DragHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Настройки (тащи за шапку)"
+
+[node name="VersionOption" type="OptionButton" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save в .tres"
+
+[node name="SaveStatus" type="Label" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+
+[node name="StatusLabel" type="Label" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+text = ""
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/PanelBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SettingsRows" type="VBoxContainer" parent="Panel/PanelBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Cursor" type="Control" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_cursor")

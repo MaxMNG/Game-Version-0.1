@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_balance")
 trust_start_value = 0
-trust_min = -5
-trust_max = 5
+trust_min = -100
+trust_max = 100
 wipes_per_run_limit = 10
+trust_delta_duration = 1.5

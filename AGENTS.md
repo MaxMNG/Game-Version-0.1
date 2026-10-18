@@ -40,8 +40,10 @@ Version 0.1/           # Корень = Obsidian-хранилище + git-реп
 ## Окружение
 
 - Движок: `F:/GODOT/Godot_v4.7.2-stable_win64_console.exe` (консольная сборка)
-- MCP-сервер: `godot` (godot-mcp v3.1.0, конфиг — `opencode.json`). Live-контроль
-  запущенной игры через автолоад `MCPInteractionServer` (127.0.0.1:9090).
+- MCP-сервер: `godot` (godot-ai v4.3.0, конфиг — `opencode.json`). Live-контроль
+  через запущенный редактор Godot с плагином `Game/addons/godot_ai`
+  (сессия видна в `session_manage`; игра запускается через `project_run`).
+  Решение зафиксировано: godot-ai — основной MCP (см. DECISIONS.md, D17).
 - Рендерер: Compatibility (gl_compatibility), окно 1920x1080.
 
 ## Команды проверки (запускать после изменений в Game/)

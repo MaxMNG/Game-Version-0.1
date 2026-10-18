@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DebugConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/debug_config.gd" id="1_dbg"]
+
+[resource]
+script = ExtResource("1_dbg")
+font_size = 14
+text_opacity = 0.55

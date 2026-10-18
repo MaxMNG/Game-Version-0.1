@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/effects/scanline_background.gd" id="1_scn"]
+[ext_resource type="Shader" path="res://assets/shaders/scanline_background.gdshader" id="2_sh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("2_sh")
+
+[node name="ScanlineBackground" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_1")
+script = ExtResource("1_scn")
+color = Color(1, 1, 1, 1)

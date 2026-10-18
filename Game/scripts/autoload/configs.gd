@@ -52,6 +52,18 @@ var wipe: WipeConfig
 ## Конфиг игрового курсора (кольцо + точка).
 var cursor: CursorConfig
 
+## Конфиг системы комментариев (цвета mom/dad).
+var comment: CommentConfig
+
+## Конфиг debug-полоски.
+var debug: DebugConfig
+
+## Конфиг звука.
+var audio: AudioConfig
+
+## Конфиг слоя scanlines (версия 0.2).
+var scanline: ScanlineConfig
+
 
 func _ready() -> void:
 	balance = load("res://resources/configs/balance.tres") as BalanceConfig
@@ -117,3 +129,19 @@ func _ready() -> void:
 	cursor = load("res://resources/configs/cursor.tres") as CursorConfig
 	if cursor == null:
 		push_error("Configs: не удалось загрузить resources/configs/cursor.tres")
+
+	comment = load("res://resources/configs/comment.tres") as CommentConfig
+	if comment == null:
+		push_error("Configs: не удалось загрузить resources/configs/comment.tres")
+
+	debug = load("res://resources/configs/debug.tres") as DebugConfig
+	if debug == null:
+		push_error("Configs: не удалось загрузить resources/configs/debug.tres")
+
+	audio = load("res://resources/configs/audio.tres") as AudioConfig
+	if audio == null:
+		push_error("Configs: не удалось загрузить resources/configs/audio.tres")
+
+	scanline = load("res://resources/configs/scanline.tres") as ScanlineConfig
+	if scanline == null:
+		push_error("Configs: не удалось загрузить resources/configs/scanline.tres")

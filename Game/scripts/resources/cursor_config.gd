@@ -20,3 +20,9 @@ extends Resource
 @export var color_normal: Color = Color(1, 1, 1, 0.9)
 ## Цвет курсора над кликабельным элементом.
 @export var color_hover: Color = Color(0.4, 1.0, 0.4, 1.0)
+
+@export_group("Ripple")
+## Длительность расходящегося круга клика (сек).
+@export var ripple_duration: float = 0.35
+## Максимальный радиус ripple (пикселей).
+@export var ripple_radius: float = 42.0

@@ -23,8 +23,11 @@ const FALLBACK_SCENE: String = "res://scenes/effects/background_effect.tscn"
 var _current_id: String = ""
 var _current_instance: Control = null
 var _current_config: Resource = null
+var _dragging: bool = false
+var _current_section: VBoxContainer = null
 
 @onready var _slot: Control = %BackgroundSlot
+@onready var _panel: PanelContainer = %SidePanel
 @onready var _rows: VBoxContainer = %SettingsRows
 @onready var _save_button: Button = %SaveButton
 @onready var _save_status: Label = %SaveStatus
@@ -41,6 +44,7 @@ func _ready() -> void:
 	_btn_smoke.pressed.connect(_on_effect_button.bind("smoke"))
 	_btn_combo.pressed.connect(_on_effect_button.bind("combo"))
 	_save_button.pressed.connect(_on_save_pressed)
+	%DragHeader.gui_input.connect(_on_header_input)
 	# Стартуем с самого нового готового эффекта, иначе — запасной вариант.
 	if ResourceLoader.exists(EFFECTS[0]["scene"]):
 		_on_effect_button(EFFECTS[0]["id"])
@@ -58,6 +62,59 @@ func _on_effect_button(effect_id: String) -> void:
 	_mount(entry)
 
 
+func _on_header_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb: InputEventMouseButton = event as InputEventMouseButton
+		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
+			_dragging = true
+
+
+func _input(event: InputEvent) -> void:
+	if not _dragging:
+		return
+	if event is InputEventMouseButton:
+		var mb: InputEventMouseButton = event as InputEventMouseButton
+		if not mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
+			_dragging = false
+	elif event is InputEventMouseMotion:
+		var mm: InputEventMouseMotion = event as InputEventMouseMotion
+		_panel.position += mm.relative
+		_clamp_panel()
+
+
+## Не дать окну улететь за экран.
+func _clamp_panel() -> void:
+	var vp: Vector2 = get_viewport_rect().size
+	var sz: Vector2 = _panel.get_combined_minimum_size()
+	_panel.position.x = clampf(_panel.position.x, 80.0 - sz.x, maxf(80.0 - sz.x, vp.x - 80.0))
+	_panel.position.y = clampf(_panel.position.y, 0.0, maxf(0.0, vp.y - 60.0))
+
+
+## Новый сворачиваемый раздел (вкладка) с отступом.
+func _section(title: String) -> void:
+	var sep := HSeparator.new()
+	_rows.add_child(sep)
+	var header := Button.new()
+	header.text = "▼ " + title
+	header.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 8)
+	_rows.add_child(header)
+	_rows.add_child(body)
+	header.pressed.connect(_on_section_toggled.bind(body, header, title))
+	_current_section = body
+
+
+func _on_section_toggled(body: VBoxContainer, header: Button, title: String) -> void:
+	body.visible = not body.visible
+	header.text = ("▼ " if body.visible else "▶ ") + title
+
+
+func _target() -> VBoxContainer:
+	if _current_section == null or not is_instance_valid(_current_section):
+		return _rows
+	return _current_section
 func _on_save_pressed() -> void:
 	if _current_config == null or _current_config.resource_path.is_empty():
 		_save_status.text = "Нечего сохранять."
@@ -97,7 +154,7 @@ func add_slider(label_text: String, min_v: float, max_v: float, step_v: float,
 	row.add_child(lab)
 	row.add_child(slider)
 	row.add_child(val)
-	_rows.add_child(row)
+	_target().add_child(row)
 
 
 ## Добавить в панель строку-выбор цвета (для живых настроек эффекта).
@@ -117,11 +174,12 @@ func add_color(label_text: String, initial: Color, on_changed: Callable) -> void
 	picker.color_changed.connect(func(c: Color): on_changed.call(c))
 	row.add_child(lab)
 	row.add_child(picker)
-	_rows.add_child(row)
+	_target().add_child(row)
 
 
 ## Очистить панель настроек.
 func clear_panel() -> void:
+	_current_section = null
 	for child: Node in _rows.get_children():
 		child.queue_free()
 	_save_status.text = ""
@@ -165,7 +223,7 @@ func _mount_fallback() -> void:
 	var lab := Label.new()
 	lab.text = "Запасной вариант.\nНастройки — с новыми\nэффектами."
 	lab.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_rows.add_child(lab)
+	_target().add_child(lab)
 	_set_status("Сейчас: %s." % FALLBACK_TITLE)
 
 
@@ -211,6 +269,7 @@ func _build_ring_panel() -> void:
 	var ring: RingConfig = Configs.ring
 	if ring == null:
 		return
+	_section("Геометрия и динамика")
 	add_slider("Бары", 32.0, 256.0, 1.0, ring.bar_count,
 			func(v: float): ring.bar_count = int(v); _apply_current())
 	add_slider("Радиус", 0.15, 0.5, 0.01, ring.ring_radius,
@@ -235,6 +294,7 @@ func _build_ring_panel() -> void:
 			func(v: float): ring.bar_length = v; _apply_current())
 	add_slider("Альфа", 0.0, 1.0, 0.01, ring.bar_opacity,
 			func(v: float): ring.bar_opacity = v; _apply_current())
+	_section("Цвета")
 	add_color("Цвет A", ring.color_a,
 			func(c: Color): ring.color_a = c; _apply_current())
 	add_color("Цвет B", ring.color_b,
@@ -247,6 +307,7 @@ func _build_matrix_panel() -> void:
 	var matrix: MatrixConfig = Configs.matrix
 	if matrix == null:
 		return
+	_section("Сетка и заряд")
 	add_slider("Ячейка", 8.0, 32.0, 8.0, matrix.cell_size_px,
 			func(v: float): matrix.cell_size_px = v; _apply_current())
 	add_slider("Радиус", 0.05, 0.4, 0.01, matrix.glow_radius,
@@ -271,6 +332,7 @@ func _build_matrix_panel() -> void:
 			func(v: float): matrix.cursor_smooth_speed = v; _apply_current())
 	add_slider("Яркость", 0.1, 1.5, 0.05, matrix.brightness,
 			func(v: float): matrix.brightness = v; _apply_current())
+	_section("Цвета")
 	add_color("Свечение", matrix.color_glow,
 			func(c: Color): matrix.color_glow = c; _apply_current())
 	add_color("Ореол", matrix.color_halo,
@@ -285,6 +347,7 @@ func _build_smoke_panel() -> void:
 	var smoke: SmokeConfig = Configs.smoke
 	if smoke == null:
 		return
+	_section("Шум и динамика")
 	add_slider("Масштаб", 1.5, 6.0, 0.1, smoke.noise_scale,
 			func(v: float): smoke.noise_scale = v; _apply_current())
 	add_slider("Октавы", 1.0, 4.0, 1.0, float(smoke.octave_count),
@@ -311,6 +374,7 @@ func _build_smoke_panel() -> void:
 			func(v: float): smoke.cursor_swirl = v; _apply_current())
 	add_slider("Яркость", 0.1, 1.5, 0.05, smoke.brightness,
 			func(v: float): smoke.brightness = v; _apply_current())
+	_section("Цвета")
 	add_color("Фон", smoke.background_color,
 			func(c: Color): smoke.background_color = c; _apply_current())
 	add_color("Слой 1", smoke.layer1_color,
@@ -326,7 +390,7 @@ func _build_combo_panel() -> void:
 	var hint := Label.new()
 	hint.text = "Матрица снизу, дым сверху.\nСлои настраиваются\nна вкладках 2 и 3."
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_rows.add_child(hint)
+	_target().add_child(hint)
 	add_slider("Дым в комбо", 0.0, 1.0, 0.05, combo.smoke_amount,
 			func(v: float): combo.smoke_amount = v; _apply_current())
 

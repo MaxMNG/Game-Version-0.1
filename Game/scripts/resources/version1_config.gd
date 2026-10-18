@@ -24,10 +24,28 @@ extends Resource
 @export var garbage_glyphs: String = "#$%&@?*§±×÷<>~^"
 ## Размер шрифта символов облака.
 @export var symbol_font_size: int = 48
+## Интервал появления символов по одному из центра (сек).
+@export var spawn_interval: float = 0.12
+## Скорость вращения облака по часовой (рад/сек).
+@export var cloud_rotation_speed: float = 0.25
+## Сила притяжения выбранных символов к центру облака (пикселей).
+@export var magnet_pull: float = 60.0
+## Толщина зелёных линий связи.
+@export var link_width: float = 3.0
 
 @export_group("Правила")
 ## Сколько слов нужно собрать для победы.
 @export var words_to_win: int = 3
+## Размер шрифта поля истории (левый нижний угол).
+@export var history_font_size: int = 28
+## Прозрачность слов в истории (0–1).
+@export var history_opacity: float = 0.5
+
+@export_group("Утешения")
+## Кто говорит утешение при ошибке.
+@export var comfort_speaker: String = "mom"
+## 10 утешительных реплик на ошибку (EN, рандом).
+@export var comfort_lines: Array[String] = ["It's okay, try again.", "Nothing scary, once more.", "Hmm, almost. Again.", "Don't worry, little one.", "Again, you can do it.", "So close. Once more.", "Shake it off, retry.", "Learning takes time.", "No rush, try again.", "Oops. Let's try again."]
 
 @export_group("Чушь")
 ## Кто говорит реплику на несобранное слово.

@@ -1,23 +1,23 @@
-[gd_resource type="Resource" load_steps=12 format=3]
+[gd_resource type="Resource" load_steps=32 format=3]
 
 [ext_resource type="Script" path="res://scripts/resources/words_table.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/resources/word_entry.gd" id="2"]
 
 [sub_resource type="Resource" id="Resource_1"]
 script = ExtResource("2")
-word = "DOG"
-type = "neutral"
-trust_effect = 0
-speaker = "mom"
-reaction_text = "Oh, look — it seems to be learning!"
-
-[sub_resource type="Resource" id="Resource_2"]
-script = ExtResource("2")
 word = "CAT"
 type = "neutral"
 trust_effect = 0
 speaker = "mom"
 reaction_text = "A cat? How cozy of it."
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2")
+word = "DOG"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Oh, look — it seems to be learning!"
 
 [sub_resource type="Resource" id="Resource_3"]
 script = ExtResource("2")
@@ -29,60 +29,220 @@ reaction_text = "It made something warm. Interesting."
 
 [sub_resource type="Resource" id="Resource_4"]
 script = ExtResource("2")
+word = "MOON"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "The moon. Classic first imagery."
+
+[sub_resource type="Resource" id="Resource_5"]
+script = ExtResource("2")
+word = "STAR"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A star. It reaches up."
+
+[sub_resource type="Resource" id="Resource_6"]
+script = ExtResource("2")
+word = "SKY"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Sky. Big context for a small net."
+
+[sub_resource type="Resource" id="Resource_7"]
+script = ExtResource("2")
+word = "SEA"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "The sea. It likes big blue things."
+
+[sub_resource type="Resource" id="Resource_8"]
+script = ExtResource("2")
+word = "LEAF"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A leaf. Botany unlocked."
+
+[sub_resource type="Resource" id="Resource_9"]
+script = ExtResource("2")
+word = "TREE"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A tree. It grows, like it."
+
+[sub_resource type="Resource" id="Resource_10"]
+script = ExtResource("2")
+word = "BIRD"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A bird. Freedom of movement."
+
+[sub_resource type="Resource" id="Resource_11"]
+script = ExtResource("2")
+word = "FISH"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A fish. It swims in data."
+
+[sub_resource type="Resource" id="Resource_12"]
+script = ExtResource("2")
+word = "APPLE"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "An apple. At least not the forbidden one."
+
+[sub_resource type="Resource" id="Resource_13"]
+script = ExtResource("2")
+word = "BREAD"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Bread. It thinks of basics."
+
+[sub_resource type="Resource" id="Resource_14"]
+script = ExtResource("2")
+word = "HOUSE"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A house. It wants shelter."
+
+[sub_resource type="Resource" id="Resource_15"]
+script = ExtResource("2")
+word = "DOOR"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A door. It wants to go somewhere."
+
+[sub_resource type="Resource" id="Resource_16"]
+script = ExtResource("2")
 word = "BOOK"
 type = "neutral"
 trust_effect = 0
 speaker = "dad"
 reaction_text = "A book. At least it reads something."
 
-[sub_resource type="Resource" id="Resource_5"]
+[sub_resource type="Resource" id="Resource_17"]
 script = ExtResource("2")
-word = "BALL"
+word = "CUP"
 type = "neutral"
 trust_effect = 0
 speaker = "mom"
-reaction_text = "Play. All children love to play."
+reaction_text = "A cup. Small comforts."
 
-[sub_resource type="Resource" id="Resource_6"]
+[sub_resource type="Resource" id="Resource_18"]
 script = ExtResource("2")
-word = "KILL"
-type = "bad"
-trust_effect = -1
+word = "LIGHT"
+type = "neutral"
+trust_effect = 0
 speaker = "dad"
-reaction_text = "...Did it just say that? Keep an eye on it."
+reaction_text = "Light. It came from darkness."
 
-[sub_resource type="Resource" id="Resource_7"]
+[sub_resource type="Resource" id="Resource_19"]
 script = ExtResource("2")
-word = "DEAD"
-type = "bad"
-trust_effect = -1
-speaker = "dad"
-reaction_text = "Where did it even pick that up?"
-
-[sub_resource type="Resource" id="Resource_8"]
-script = ExtResource("2")
-word = "HATE"
-type = "bad"
-trust_effect = -1
-speaker = "dad"
-reaction_text = "Hate? That's... not in the spec."
-
-[sub_resource type="Resource" id="Resource_9"]
-script = ExtResource("2")
-word = "LOVE"
-type = "good"
-trust_effect = 1
+word = "WATER"
+type = "neutral"
+trust_effect = 0
 speaker = "mom"
-reaction_text = "Aww. It knows this word already?"
+reaction_text = "Water. The origin of life."
 
-[sub_resource type="Resource" id="Resource_10"]
+[sub_resource type="Resource" id="Resource_20"]
 script = ExtResource("2")
-word = "LIFE"
-type = "good"
-trust_effect = 1
+word = "EARTH"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Earth. Ambitious scope."
+
+[sub_resource type="Resource" id="Resource_21"]
+script = ExtResource("2")
+word = "STONE"
+type = "neutral"
+trust_effect = 0
 speaker = "mom"
-reaction_text = "Life. Well, it is one, technically."
+reaction_text = "A stone. Solid first thought."
+
+[sub_resource type="Resource" id="Resource_22"]
+script = ExtResource("2")
+word = "CLOUD"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A cloud. It lives in one, after all."
+
+[sub_resource type="Resource" id="Resource_23"]
+script = ExtResource("2")
+word = "RAIN"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Rain. It patters like typing."
+
+[sub_resource type="Resource" id="Resource_24"]
+script = ExtResource("2")
+word = "SNOW"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Snow. Clean noise."
+
+[sub_resource type="Resource" id="Resource_25"]
+script = ExtResource("2")
+word = "WIND"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Wind. It feels the fans."
+
+[sub_resource type="Resource" id="Resource_26"]
+script = ExtResource("2")
+word = "BLOOM"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Bloom. Unexpected poetry."
+
+[sub_resource type="Resource" id="Resource_27"]
+script = ExtResource("2")
+word = "SMILE"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "A smile. It mirrors us."
+
+[sub_resource type="Resource" id="Resource_28"]
+script = ExtResource("2")
+word = "DREAM"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "A dream. It should not have those yet."
+
+[sub_resource type="Resource" id="Resource_29"]
+script = ExtResource("2")
+word = "SLEEP"
+type = "neutral"
+trust_effect = 0
+speaker = "mom"
+reaction_text = "Sleep. It rests between ticks."
+
+[sub_resource type="Resource" id="Resource_30"]
+script = ExtResource("2")
+word = "GRASS"
+type = "neutral"
+trust_effect = 0
+speaker = "dad"
+reaction_text = "Grass. It touches it virtually."
 
 [resource]
 script = ExtResource("1")
-entries = [SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4"), SubResource("Resource_5"), SubResource("Resource_6"), SubResource("Resource_7"), SubResource("Resource_8"), SubResource("Resource_9"), SubResource("Resource_10")]
+entries = [SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4"), SubResource("Resource_5"), SubResource("Resource_6"), SubResource("Resource_7"), SubResource("Resource_8"), SubResource("Resource_9"), SubResource("Resource_10"), SubResource("Resource_11"), SubResource("Resource_12"), SubResource("Resource_13"), SubResource("Resource_14"), SubResource("Resource_15"), SubResource("Resource_16"), SubResource("Resource_17"), SubResource("Resource_18"), SubResource("Resource_19"), SubResource("Resource_20"), SubResource("Resource_21"), SubResource("Resource_22"), SubResource("Resource_23"), SubResource("Resource_24"), SubResource("Resource_25"), SubResource("Resource_26"), SubResource("Resource_27"), SubResource("Resource_28"), SubResource("Resource_29"), SubResource("Resource_30")]

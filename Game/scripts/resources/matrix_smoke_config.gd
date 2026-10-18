@@ -9,3 +9,9 @@ extends Resource
 @export_group("Комбо")
 ## Доля видимости слоя дыма поверх глифов (0 — дыма нет, 1 — как в соло).
 @export var smoke_amount: float = 0.35
+
+@export_group("Слои")
+## Показывать слой матрицы (глифы).
+@export var show_matrix: bool = true
+## Показывать слой дыма (вуаль).
+@export var show_smoke: bool = true

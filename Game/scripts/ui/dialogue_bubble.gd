@@ -53,7 +53,28 @@ func show_line(speaker_id: StringName, text: String) -> void:
 	_typing = true
 	_speaker_label.text = String(speaker_id).to_upper()
 	_text_label.text = ""
+	_apply_speaker_color(speaker_id)
 	visible = true
+
+
+## Подтянуть цвет рамки/текста по говорящему (mom/dad).
+func _apply_speaker_color(speaker_id: StringName) -> void:
+	if Configs.comment == null:
+		return
+	var col: Color = Configs.comment.mom_color
+	if String(speaker_id) == "dad":
+		col = Configs.comment.dad_color
+	_text_label.add_theme_font_size_override("font_size", Configs.comment.font_size)
+	_speaker_label.add_theme_color_override("font_color", col)
+	var style: StyleBoxFlat = get_theme_stylebox("panel") as StyleBoxFlat
+	if style == null:
+		style = StyleBoxFlat.new()
+		style.bg_color = Color(0.02, 0.03, 0.06, 0.92)
+		style.set_corner_radius_all(Configs.comment.corner_radius)
+		style.set_border_width_all(Configs.comment.border_width)
+		add_theme_stylebox_override("panel", style)
+	style.border_color = col
+	_text_label.add_theme_color_override("font_color", col)
 
 
 ## Пропуск: если печатается — допечатать, иначе сообщить что готово к следующей.

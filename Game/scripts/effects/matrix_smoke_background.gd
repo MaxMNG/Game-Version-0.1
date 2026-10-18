@@ -45,6 +45,8 @@ func apply_config() -> void:
 	# Доля видимости дыма поверх глифов — только локальному материалу комбо.
 	_smoke_material.set_shader_parameter(
 			"amount", clampf(Configs.matrix_smoke.smoke_amount, 0.0, 1.0))
+	_matrix_layer.visible = Configs.matrix_smoke.show_matrix
+	_smoke_layer.visible = Configs.matrix_smoke.show_smoke
 
 
 ## Включить/выключить приглушённый режим обоих слоёв.

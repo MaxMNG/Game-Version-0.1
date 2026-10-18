@@ -12,6 +12,18 @@ extends Resource
 ## Интервал печати одного символа логотипа (сек).
 @export var type_interval: float = 0.08
 
+@export_group("GameIntro")
+## Длительность мигающего квадрата вверху (сек).
+@export var square_duration: float = 2.0
+## Текст загрузки ОС (EN, многострочный).
+@export var os_text: String = "ClosedAI BIOS v0.1\nMemory check... OK\nLoading weights... OK"
+## Длительность показа текста ОС (сек).
+@export var os_duration: float = 1.5
+## Интервал печати медленной части логотипа «0.1» (сек).
+@export var slow_interval: float = 0.5
+## Пауза между символами «0», «.», «1» (сек).
+@export var slow_pause: float = 1.0
+
 @export_group("Тексты")
 ## Текст логотипа.
 @export var logo_text: String = "VERSION 0.1"

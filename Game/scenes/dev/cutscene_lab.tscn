@@ -1,0 +1,183 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/dev/cutscene_lab.gd" id="1_lab"]
+[ext_resource type="Script" path="res://scripts/ui/custom_cursor.gd" id="2_cursor"]
+
+[node name="CutsceneLab" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lab")
+
+[node name="PreviewSlot" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 100
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -476.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PanelBox" type="VBoxContainer" parent="Panel"]
+theme_override_constants/separation = 10
+
+[node name="DragHeader" type="HBoxContainer" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+mouse_filter = 0
+
+[node name="Title" type="Label" parent="Panel/PanelBox/DragHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Кат-сцены (тащи за шапку)"
+
+[node name="SceneOption" type="OptionButton" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FinalCheck" type="CheckBox" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Финал 0.2→0.3 (апгрейд)"
+
+[node name="TransportRow" type="HBoxContainer" parent="Panel/PanelBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="Panel/PanelBox/TransportRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play"
+
+[node name="StopButton" type="Button" parent="Panel/PanelBox/TransportRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stop"
+
+[node name="SaveButton" type="Button" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save в .tres"
+
+[node name="SaveStatus" type="Label" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+
+[node name="StatusLabel" type="Label" parent="Panel/PanelBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+text = ""
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/PanelBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PanelRows" type="VBoxContainer" parent="Panel/PanelBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="TmlHeader" type="Button" parent="Panel/PanelBox/Scroll/PanelRows"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "▼ Тайминги"
+
+[node name="TimingRows" type="VBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LinesHeader" type="Button" parent="Panel/PanelBox/Scroll/PanelRows"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "▼ Реплики (таймлайн)"
+
+[node name="LinesBody" type="VBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LinesList" type="ItemList" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 220)
+
+[node name="SpeakerOption" type="OptionButton" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LineText" type="TextEdit" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+
+[node name="PauseRow" type="HBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody/PauseRow"]
+layout_mode = 2
+text = "Пауза:"
+[node name="PauseSpin" type="SpinBox" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody/PauseRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 5.0
+step = 0.1
+
+[node name="LinesRow" type="HBoxContainer" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddLine" type="Button" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody/LinesRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+ Реплика"
+
+[node name="DelLine" type="Button" parent="Panel/PanelBox/Scroll/PanelRows/LinesBody/LinesRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "− Удалить"
+
+[node name="Cursor" type="Control" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_cursor")

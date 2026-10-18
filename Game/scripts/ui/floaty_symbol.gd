@@ -2,7 +2,8 @@ class_name FloatySymbol
 extends Button
 ## Кликабельный символ облака версии 0.1.
 ##
-## Медленно дрейфует синусоидой, выделяется зелёным, ошибка — красное мигание.
+## Дрейфует синусоидой вокруг базовой позиции, зелёный — выбран,
+## красный — ошибка, белый флеш — успех. Умеет улетать за экран.
 
 ## Клик по символу (сам символ).
 signal symbol_clicked(symbol: FloatySymbol)
@@ -16,6 +17,7 @@ var _base_pos: Vector2 = Vector2.ZERO
 var _phase: float = 0.0
 var _drift_speed: float = 30.0
 var _drift_amp: float = 18.0
+var _flying: bool = false
 
 
 func _ready() -> void:
@@ -38,8 +40,15 @@ func setup(p_glyph: String, start_pos: Vector2, drift_speed: float, drift_amp: f
 
 
 func _process(delta: float) -> void:
+	if _flying:
+		return
 	_phase += delta * _drift_speed / 60.0
 	position = _base_pos + Vector2(cos(_phase), sin(_phase * 1.3)) * _drift_amp
+
+
+## Сдвинуть базовую позицию (вращение облака, магнит).
+func set_base_pos(pos: Vector2) -> void:
+	_base_pos = pos
 
 
 ## Выделить/снять выделение (зелёное свечение через modulate).
@@ -51,17 +60,30 @@ func set_selected(value: bool) -> void:
 		modulate = Color(1, 1, 1, 1)
 
 
-## Красное мигание ошибки.
-func flash_error() -> void:
-	var tween: Tween = create_tween()
+## Пометить ошибочным (красный, без мигания — мигание делает сцена).
+func set_wrong() -> void:
 	modulate = Color(1.0, 0.3, 0.3, 1.0)
-	tween.tween_property(self, "modulate:a", 0.2, 0.15)
-	tween.tween_property(self, "modulate:a", 1.0, 0.15)
-	tween.tween_callback(_restore_after_flash)
 
 
-func _restore_after_flash() -> void:
-	set_selected(selected)
+## Белый флеш успеха.
+func flash_success() -> void:
+	modulate = Color(1, 1, 1, 1)
+
+
+## Улететь за экран с затуханием и удалиться.
+func fly_off(direction: Vector2) -> void:
+	_flying = true
+	var target: Vector2 = position + direction.normalized() * 1400.0
+	var tween: Tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "position", target, 0.6)
+	tween.tween_property(self, "modulate:a", 0.0, 0.6)
+	tween.chain().tween_callback(queue_free)
+
+
+## Красное мигание ошибки (совместимость).
+func flash_error() -> void:
+	set_wrong()
 
 
 func _on_pressed() -> void:
