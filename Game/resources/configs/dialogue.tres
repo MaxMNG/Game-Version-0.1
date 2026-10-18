@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue_config.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+chars_per_second = 30.0
+default_pause_after = 0.6
+bubble_max_width = 900.0
+font_size = 28
+speaker_font_size = 20

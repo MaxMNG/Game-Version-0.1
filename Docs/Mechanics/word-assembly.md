@@ -35,4 +35,6 @@
 
 ## Статус
 
-Не реализовано — этап прототипа, шаг 3 плана.
+Реализовано в прототипе: `scenes/minigames/word_assembly.tscn` + `scripts/minigames/word_assembly.gd`
+(наследник `BaseMinigame`), `floaty_symbol.tscn/.gd`, конфиг `version1.tres`.
+Строгий порядок букв + CONFIRM/CLEAR (D9); 3 успеха → апгрейд; чушь — новый набор.

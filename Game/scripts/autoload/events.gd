@@ -13,6 +13,8 @@ signal trust_changed(new_value: int, delta: int)
 signal game_state_changed(new_state: int)
 ## Игрок прошёл текущую версию, начинается апгрейд до следующей.
 signal version_upgrade_requested()
+## Экран стирания завершён, текущую версию нужно начать заново.
+signal version_restart_requested()
 
 # --- Мини-игры ---
 ## Мини-игра завершилась успехом.

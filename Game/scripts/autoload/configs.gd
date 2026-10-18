@@ -28,6 +28,30 @@ var words_v01: WordsTable
 ## Таблица предложений версии 0.2 (мини-игра «Сбор предложений»).
 var sentences_v02: SentencesTable
 
+## Конфиг главного меню (тексты, задержки).
+var menu: MenuConfig
+
+## Конфиг диалоговой системы (скорость печати, паузы).
+var dialogue: DialogueConfig
+
+## Конфиг интро «Рождение ИИ».
+var intro: IntroConfig
+
+## Конфиг версии 0.1 «Сбор слов».
+var version1: Version1Config
+
+## Конфиг версии 0.2 «Сбор предложений».
+var version2: Version2Config
+
+## Конфиг кат-сцены апгрейда.
+var cutscene: CutsceneConfig
+
+## Конфиг экрана стирания.
+var wipe: WipeConfig
+
+## Конфиг игрового курсора (кольцо + точка).
+var cursor: CursorConfig
+
 
 func _ready() -> void:
 	balance = load("res://resources/configs/balance.tres") as BalanceConfig
@@ -61,3 +85,35 @@ func _ready() -> void:
 	sentences_v02 = load("res://resources/content/sentences_v02.tres") as SentencesTable
 	if sentences_v02 == null:
 		push_error("Configs: не удалось загрузить resources/content/sentences_v02.tres (запусти Tools/convert_content.py)")
+
+	menu = load("res://resources/configs/menu.tres") as MenuConfig
+	if menu == null:
+		push_error("Configs: не удалось загрузить resources/configs/menu.tres")
+
+	dialogue = load("res://resources/configs/dialogue.tres") as DialogueConfig
+	if dialogue == null:
+		push_error("Configs: не удалось загрузить resources/configs/dialogue.tres")
+
+	intro = load("res://resources/configs/intro.tres") as IntroConfig
+	if intro == null:
+		push_error("Configs: не удалось загрузить resources/configs/intro.tres")
+
+	version1 = load("res://resources/configs/version1.tres") as Version1Config
+	if version1 == null:
+		push_error("Configs: не удалось загрузить resources/configs/version1.tres")
+
+	version2 = load("res://resources/configs/version2.tres") as Version2Config
+	if version2 == null:
+		push_error("Configs: не удалось загрузить resources/configs/version2.tres")
+
+	cutscene = load("res://resources/configs/cutscene.tres") as CutsceneConfig
+	if cutscene == null:
+		push_error("Configs: не удалось загрузить resources/configs/cutscene.tres")
+
+	wipe = load("res://resources/configs/wipe.tres") as WipeConfig
+	if wipe == null:
+		push_error("Configs: не удалось загрузить resources/configs/wipe.tres")
+
+	cursor = load("res://resources/configs/cursor.tres") as CursorConfig
+	if cursor == null:
+		push_error("Configs: не удалось загрузить resources/configs/cursor.tres")

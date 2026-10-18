@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="CutsceneConfig" load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/cutscene_config.gd" id="1_cut"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_line")
+speaker_id = &"mom"
+text = "Good job!"
+pause_after = 0.6
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2_line")
+speaker_id = &"dad"
+text = "Not bad... We can go further."
+pause_after = 0.6
+
+[sub_resource type="Resource" id="Resource_3"]
+script = ExtResource("2_line")
+speaker_id = &"mom"
+text = "Shall we give it more variables?"
+pause_after = 0.6
+
+[sub_resource type="Resource" id="Resource_4"]
+script = ExtResource("2_line")
+speaker_id = &"dad"
+text = "Yes, let's see how it copes."
+pause_after = 0.8
+
+[sub_resource type="Resource" id="Resource_5"]
+script = ExtResource("2_line")
+speaker_id = &"mom"
+text = "It did well."
+pause_after = 0.6
+
+[sub_resource type="Resource" id="Resource_6"]
+script = ExtResource("2_line")
+speaker_id = &"dad"
+text = "Version 0.3 is not ready yet. Prototype complete."
+pause_after = 0.8
+
+[resource]
+script = ExtResource("1_cut")
+shrink_duration = 0.8
+flash_duration = 0.4
+upgrade_lines = [SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4")]
+final_lines = [SubResource("Resource_5"), SubResource("Resource_6")]

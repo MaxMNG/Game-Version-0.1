@@ -28,4 +28,6 @@
 
 ## Статус
 
-Не реализовано — этап прототипа, шаг 2 плана (базовый компонент, нужен уже для интро).
+Реализовано в прототипе: `dialogue_line.gd`, `dialogue_bubble.tscn/.gd`,
+`dialogue_player.tscn/.gd` (очередь + `Events.dialogue_line_requested`), `dialogue.tres`.
+Пропуск реплик кликом/Space (D12).

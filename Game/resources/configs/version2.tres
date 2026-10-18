@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Version2Config" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/version2_config.gd" id="1_v2"]
+
+[resource]
+script = ExtResource("1_v2")
+min_words = 3
+max_words = 5
+successes_to_win = 3
+gibberish_limit = 5
+bad_limit = 3
+banner_text = "You have been upgraded to version 0.2"
+banner_duration = 2.0
+gibberish_text = "No, that's gibberish. Again."
+gibberish_speaker = "dad"
+wipe_text = "It's not coping. Wipe it, we'll try again."
+bad_wipe_text = "It passed, but I don't like the phrases it's making... Let's start over."
+chip_font_size = 32
+reaction_delay = 1.2

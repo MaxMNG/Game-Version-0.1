@@ -16,6 +16,15 @@ enum State {
 ## Текущее состояние. Снаружи — только чтение, менять через change_state().
 var state: State = State.MENU
 
+## Флаг кат-сцены апгрейда: false — переход 0.1 → 0.2, true — переход 0.2 → 0.3.
+## Выставляется мини-игрой перед запросом апгрейда, читается кат-сценой.
+var upgrade_is_final: bool = false
+
+## Текст стирания для экрана wipe (выставляется версией 0.2 перед fail()).
+var wipe_message: String = ""
+## Говорящий стирания.
+var wipe_speaker: StringName = &"dad"
+
 
 ## Перевести игру в новое состояние.
 func change_state(new_state: State) -> void:

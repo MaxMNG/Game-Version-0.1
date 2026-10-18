@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MenuConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/menu_config.gd" id="1_menu"]
+
+[resource]
+script = ExtResource("1_menu")
+logo_delay = 1.0
+button_delay_after_logo = 1.0
+type_interval = 0.08
+logo_text = "VERSION 0.1"
+start_button_text = "START GAME"
+alpha_text = "alpha"
+prototype_complete_text = "PROTOTYPE COMPLETE"

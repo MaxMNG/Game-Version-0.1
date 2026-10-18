@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LogoLabel" type="Label" parent="Center/VBox"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 96
+layout_mode = 2
+size_flags_horizontal = 4
+text = "VERSION 0.1"
+
+[node name="StartButton" type="Button" parent="Center/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "START GAME"
+
+[node name="AlphaLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+modulate = Color(1, 1, 1, 0.35)
+layout_direction = 2
+text = "alpha"
+
+[connection signal="pressed" from="Center/VBox/StartButton" to="." method="_on_start_button_pressed"]

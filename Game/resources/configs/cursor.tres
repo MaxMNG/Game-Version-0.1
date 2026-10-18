@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CursorConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/cursor_config.gd" id="1_cursor"]
+
+[resource]
+script = ExtResource("1_cursor")
+ring_radius = 14.0
+ring_width = 3.0
+dot_radius = 3.0
+hover_scale = 1.4
+color_normal = Color(1, 1, 1, 0.9)
+color_hover = Color(0.4, 1, 0.4, 1)

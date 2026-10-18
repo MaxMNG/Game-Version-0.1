@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/dialogue_bubble.gd" id="1_bubble"]
+
+[node name="DialogueBubble" type="PanelContainer"]
+custom_minimum_size = Vector2(900, 0)
+script = ExtResource("1_bubble")
+
+[node name="Margin" type="MarginContainer" parent="."]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 6
+
+[node name="SpeakerLabel" type="Label" parent="Margin/VBox"]
+unique_name_in_owner = true
+text = "MOM"
+
+[node name="TextLabel" type="Label" parent="Margin/VBox"]
+unique_name_in_owner = true
+autowrap_mode = 2
+text = "Hello."

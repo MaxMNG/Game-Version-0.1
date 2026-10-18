@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/trust_indicator.gd" id="1_trust"]
+
+[node name="TrustIndicator" type="HBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 64.0
+theme_override_constants/separation = 12
+script = ExtResource("1_trust")
+
+[node name="FaceLabel" type="Label" parent="."]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 36
+text = ":|"
+
+[node name="ArrowLabel" type="Label" parent="."]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 24
+text = "--"

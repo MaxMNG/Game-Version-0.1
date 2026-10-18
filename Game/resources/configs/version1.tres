@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Version1Config" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/version1_config.gd" id="1_v1"]
+
+[resource]
+script = ExtResource("1_v1")
+garbage_min = 7
+garbage_max = 12
+drift_speed = 30.0
+drift_amplitude = 18.0
+cloud_radius = 260.0
+cloud_y_radius = 200.0
+spawn_offset_y = -120.0
+garbage_glyphs = "#$%&@?*§±×÷<>~^"
+symbol_font_size = 48
+words_to_win = 3
+gibberish_speaker = "dad"
+gibberish_text = "No, that's gibberish, let's try again"
+reaction_delay = 1.2

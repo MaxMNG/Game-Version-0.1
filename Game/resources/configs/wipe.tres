@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WipeConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/wipe_config.gd" id="1_wipe"]
+
+[resource]
+script = ExtResource("1_wipe")
+fade_duration = 1.2
+dark_pause = 0.8
+speaker = "dad"

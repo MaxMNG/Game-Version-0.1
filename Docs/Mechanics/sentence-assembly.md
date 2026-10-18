@@ -44,4 +44,5 @@
 
 ## Статус
 
-Не реализовано — этап прототипа, шаг 5 плана.
+Реализовано в прототипе: `scenes/minigames/sentence_assembly.tscn` + `scripts/minigames/sentence_assembly.gd`,
+конфиг `version2.tres` (лимит чуши 5 — D10). Все три исхода проверены через godot-mcp.

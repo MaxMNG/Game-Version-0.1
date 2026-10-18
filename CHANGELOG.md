@@ -6,6 +6,34 @@
 
 ### Добавлено
 
+- Этап 1 «Прототип» завершён за один заход (шаги 2–9 плана):
+  - Конфиги `menu`, `dialogue`, `intro`, `version1`, `version2`, `cutscene`, `wipe`
+    в `Game/resources/configs/` (+ поля в автолоаде `Configs`).
+  - Диалоговая система: `DialogueLine`, `DialogueBubble`, `DialoguePlayer`
+    (очередь + `Events.dialogue_line_requested`), `dialogue.tres`.
+  - Главное меню (`main_menu`): печать логотипа, кнопка старта, подпись alpha.
+  - Интро (`intro` + `flash_overlay`): вспышка → появление фона → 3 с свободной игры →
+    диалог mom/dad → VERSION_1; пропуск кликом/Space.
+  - Версия 0.1 (`word_assembly` + `floaty_symbol`): облако букв + мусор, строгий порядок
+    + CONFIRM/CLEAR, 3 победы → апгрейд; `trust_indicator` (смайлик + стрелка).
+  - Апгрейд (`upgrade_cutscene`, параметризован `Game.upgrade_is_final`): диалог →
+    сжатие → вспышка → VERSION_2 / заглушка VERSION_3.
+  - Версия 0.2 (`sentence_assembly`): чипы + мусор, CONFIRM/CLEAR, победа/стирание/
+    особое стирание; лимит чуши 5.
+  - Стирание (`wipe_screen`): затухание + реплика + рестарт версии; новый сигнал
+    `Events.version_restart_requested` (рестарт без смены стейта).
+  - Финал прототипа (`prototype_complete`): «PROTOTYPE COMPLETE», клик — в меню.
+  - Проводка всех состояний и оверлеев в `main.gd`; фон в группе `game_background`.
+  - Фоновые комментарии: реплики из CSV + реплики dad через диалог-систему.
+- Пост-прототип (по замечаниям геймдизайнера, D15–D16):
+  - Игровой курсор `CustomCursor` (кольцо + точка, ховер-подсветка) + `cursor.tres`,
+    системный курсор прячется.
+  - Click-through: display-контейнеры/подписи и корни кат-сцен — `mouse_filter IGNORE`
+    (пропуск кат-сцен кликом реально заработал).
+  - Безопасная зона спавна 0.1: эллипс + сдвиг вверх (`cloud_y_radius`,
+    `spawn_offset_y` в `version1.tres`); live-тест наведения 16/16 и сквозной
+    клик-тест (`game_click`) пройдены.
+
 - Контент-инфраструктура (Шаг 0 прототипа):
   - Классы ресурсов `WordEntry`, `SentenceEntry`, `WordsTable`, `SentencesTable` в `Game/scripts/resources/`.
   - Таблицы контента `Content/words_v01.csv` (10 слов) и `Content/sentences_v02.csv`
