@@ -9,12 +9,14 @@ var _elapsed: float = 0.0
 
 @onready var _fade: ColorRect = %FadeRect
 @onready var _dialogue: DialoguePlayer = %DialoguePlayer
+@onready var _fx: FxSprite = %FxLayer
 
 
 func _ready() -> void:
 	super._ready()
 	_fade.color = Color(0, 0, 0, 0)
 	_fade.visible = true
+	_fx.play_once()
 	var tween: Tween = create_tween()
 	tween.tween_property(_fade, "color:a", 1.0, Configs.wipe.fade_duration)
 	tween.tween_callback(_on_fade_done)

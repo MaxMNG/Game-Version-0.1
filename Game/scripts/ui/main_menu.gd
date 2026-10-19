@@ -26,6 +26,8 @@ func _ready() -> void:
 	_logo_label.text = ""
 	_start_button.text = cfg.start_button_text
 	_start_button.visible = false
+	# Focus-навигация обязательна: одна кнопка — сразу в фокусе при показе.
+	_start_button.focus_mode = Control.FOCUS_ALL
 	_alpha_label.text = cfg.alpha_text
 	_mute_background(true)
 	_set_cursor_visible(false)
@@ -38,7 +40,7 @@ func _build_intro_layers() -> void:
 	_black = ColorRect.new()
 	_black.name = "IntroBlack"
 	_black.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_black.color = Color(0, 0, 0, 1)
+	_black.color = Configs.style.col_void
 	_black.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_black)
 	_square_label = Label.new()
@@ -90,6 +92,7 @@ func _process(delta: float) -> void:
 	elif _phase == 6:
 		if _elapsed >= cfg.button_delay_after_logo:
 			_start_button.visible = true
+			_start_button.grab_focus()
 			_set_cursor_visible(true)
 			_phase = 7
 

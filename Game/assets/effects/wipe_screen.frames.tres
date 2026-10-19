@@ -1,0 +1,43 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/wipe_screen.png" id="1_atlas"]
+
+[sub_resource type="AtlasTexture" id="frame_0"]
+atlas = ExtResource("1_atlas")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_1"]
+atlas = ExtResource("1_atlas")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_2"]
+atlas = ExtResource("1_atlas")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_3"]
+atlas = ExtResource("1_atlas")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_4"]
+atlas = ExtResource("1_atlas")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_5"]
+atlas = ExtResource("1_atlas")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_6"]
+atlas = ExtResource("1_atlas")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="frame_7"]
+atlas = ExtResource("1_atlas")
+region = Rect2(768, 256, 256, 256)
+
+[resource]
+animations = [{
+"name": &"default",
+"frames": [SubResource("frame_0"), SubResource("frame_1"), SubResource("frame_2"), SubResource("frame_3"), SubResource("frame_4"), SubResource("frame_5"), SubResource("frame_6"), SubResource("frame_7")],
+"loop": false,
+"speed": 12.0
+}]

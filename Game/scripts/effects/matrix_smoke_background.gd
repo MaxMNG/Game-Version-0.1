@@ -47,6 +47,13 @@ func apply_config() -> void:
 			"amount", clampf(Configs.matrix_smoke.smoke_amount, 0.0, 1.0))
 	_matrix_layer.visible = Configs.matrix_smoke.show_matrix
 	_smoke_layer.visible = Configs.matrix_smoke.show_smoke
+	# Стадия эволюции фона 1–12 (`04_backgrounds.md`, токен `style.version_stage`):
+	# ранние версии — мягче и пустее (приглушение слоёв), поздние — плотнее.
+	if Configs.style != null:
+		var t: float = clampf((float(Configs.style.version_stage) - 1.0) / 11.0, 0.0, 1.0)
+		var dim: float = lerpf(0.65, 1.0, t)
+		_matrix_layer.modulate = Color(dim, dim, dim, 1.0)
+		_smoke_layer.modulate = Color(dim, dim, dim, 1.0)
 
 
 ## Включить/выключить приглушённый режим обоих слоёв.

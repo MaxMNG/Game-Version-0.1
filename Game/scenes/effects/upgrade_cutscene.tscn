@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/effects/upgrade_cutscene.gd" id="1_cut"]
 [ext_resource type="PackedScene" path="res://scenes/effects/flash_overlay.tscn" id="2_flash"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_player.tscn" id="3_dlg"]
+[ext_resource type="PackedScene" path="res://scenes/effects/fx_sprite.tscn" id="4_fx"]
+[ext_resource type="Resource" path="res://resources/configs/fx/upgrade_cutscene.tres" id="5_cfg"]
 
 [node name="UpgradeCutscene" type="Control"]
 anchors_preset = 15
@@ -25,12 +27,19 @@ color = Color(0, 0, 0, 1)
 
 [node name="DialoguePlayer" parent="." instance=ExtResource("3_dlg")]
 unique_name_in_owner = true
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_top = 560.0
+anchor_bottom = 1.0
+offset_top = -560.0
+offset_right = 0.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="FlashOverlay" parent="." instance=ExtResource("2_flash")]
 unique_name_in_owner = true
+
+[node name="FxLayer" parent="." instance=ExtResource("4_fx")]
+unique_name_in_owner = true
+config = ExtResource("5_cfg")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/effects/wipe_screen.gd" id="1_wipe"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_player.tscn" id="2_dlg"]
+[ext_resource type="PackedScene" path="res://scenes/effects/fx_sprite.tscn" id="3_fx"]
+[ext_resource type="Resource" path="res://resources/configs/fx/wipe_screen.tres" id="4_cfg"]
 
 [node name="WipeScreen" type="Control"]
 anchors_preset = 15
@@ -23,9 +25,16 @@ color = Color(0, 0, 0, 0)
 
 [node name="DialoguePlayer" parent="." instance=ExtResource("2_dlg")]
 unique_name_in_owner = true
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_top = 560.0
+anchor_bottom = 1.0
+offset_top = -560.0
+offset_right = 0.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="FxLayer" parent="." instance=ExtResource("3_fx")]
+unique_name_in_owner = true
+config = ExtResource("4_cfg")

@@ -194,6 +194,7 @@ func _spawn_chips_async() -> void:
 	for i: int in count:
 		var chip := Button.new()
 		chip.text = words[i]
+		chip.theme_type_variation = &"TileButton"
 		chip.add_theme_font_size_override("font_size", Configs.version2.chip_font_size)
 		_field.add_child(chip)
 		_angles[chip.get_instance_id()] = TAU * float(i) / float(count)
@@ -231,7 +232,7 @@ func _on_chip_pressed(chip: Button) -> void:
 		return
 	_picked.append(chip.text)
 	_picked_buttons.append(chip)
-	chip.modulate = Color(0.4, 1.0, 0.4, 1.0)
+	chip.modulate = Configs.style.col_good
 	Audio.play_sfx(&"click")
 	_update_sentence()
 	_layout_center()
@@ -245,7 +246,7 @@ func _return_tail_from(chip: Button) -> void:
 	for i: int in range(_picked_buttons.size() - 1, idx - 1, -1):
 		var c: Button = _picked_buttons[i]
 		if is_instance_valid(c):
-			c.modulate = Color(1, 1, 1, 1)
+			c.modulate = Configs.style.col_text
 		_picked_buttons.remove_at(i)
 		_picked.remove_at(i)
 	_update_sentence()

@@ -20,3 +20,7 @@ extends Resource
 @export_group("Индикатор")
 ## Сколько секунд видна дельта доверия у смайла.
 @export var trust_delta_duration: float = 1.5
+## Показывать числа на шкале (см. `03_ui_kit.md`: числа показываем).
+@export var show_numbers: bool = true
+## Число сегментов полоски доверия.
+@export var trust_bar_segments: int = 20

@@ -11,6 +11,7 @@ var _phase: int = 0
 @onready var _flash: FlashOverlay = %FlashOverlay
 @onready var _dialogue: DialoguePlayer = %DialoguePlayer
 @onready var _shrink_rect: ColorRect = %ShrinkRect
+@onready var _fx: FxSprite = %FxLayer
 
 
 func _ready() -> void:
@@ -50,6 +51,7 @@ func _play_shrink() -> void:
 	_shrink_rect.modulate = Color(0, 0, 0, 1)
 	_shrink_rect.scale = Vector2.ONE
 	_shrink_rect.pivot_offset = get_viewport_rect().size / 2.0
+	_fx.play_once()
 	var tween: Tween = create_tween()
 	tween.tween_property(_shrink_rect, "scale", Vector2.ZERO, Configs.cutscene.shrink_duration)
 	tween.tween_callback(_on_shrink_done)

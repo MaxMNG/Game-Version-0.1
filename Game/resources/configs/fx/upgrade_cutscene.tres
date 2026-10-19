@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FxConfig" load_steps=2 format=3]
+
+[ext_resource type="Resource" path="res://assets/effects/upgrade_cutscene.frames.tres" id="1_frames"]
+[ext_resource type="Script" path="res://scripts/resources/fx_config.gd" id="1_fx"]
+
+[resource]
+script = ExtResource("1_fx")
+display_name = "Upgrade Cutscene"
+fps = 12.0
+target_size = Vector2(512, 512)
+volume = 2
+src_json = "res://assets/effects/src/upgrade_cutscene.json"
+frames = ExtResource("1_frames")

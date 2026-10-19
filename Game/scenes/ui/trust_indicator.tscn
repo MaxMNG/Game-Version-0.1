@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/trust_indicator.gd" id="1_trust"]
+[ext_resource type="Script" path="res://scripts/ui/trust_bar.gd" id="2_bar"]
 
 [node name="TrustIndicator" type="HBoxContainer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -220.0
+offset_left = -360.0
 offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 64.0
@@ -18,7 +19,19 @@ unique_name_in_owner = true
 theme_type_variation = &"BodyLarge"
 text = ":|"
 
+[node name="TrustBar" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 14)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_bar")
+
+[node name="ValueLabel" type="Label" parent="."]
+unique_name_in_owner = true
+theme_type_variation = &"MonoLabel"
+text = "50%"
+
 [node name="ArrowLabel" type="Label" parent="."]
 unique_name_in_owner = true
 theme_type_variation = &"Body"
-text = "--"
+text = ""

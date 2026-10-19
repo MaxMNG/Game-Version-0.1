@@ -26,3 +26,19 @@
 8. Доки: `ROADMAP.md` (сразу после этапа, не в конце сессии),
    `Docs/Prototype/plan.md`, `CHANGELOG.md`.
    Настроенные геймдизайнером `.tres` не сбрасывать к дефолтам без спроса.
+
+# Ветка «эффект из Arcada» (K7, Этап 1.6 F5)
+9. Исходник — `Game/assets/effects/src/<имя>.json` (генератор:
+   `Tools/make_afx_src.py`; новые эффекты — новыми файлами, `doc.id` стабилен).
+   Перед правкой прочитать `CLAUDE.md` и `skills/afx-effect-authoring/SKILL.md`
+   самого Effector (`F:/Tools GD/Arcada Effector_1.0`).
+10. Валидация: `node tools/validate.mjs <файл>` в папке Effector — 0 ошибок,
+    сим-прогон показывает частицы.
+11. Атлас: открыть `http://localhost:5179/?open=<имя>.json&tab=atlas`,
+    Export PNG → положить рядом с JSON → `python Tools/import_afx_atlas.py <имя>`
+    (сетка читается из `exp` исходника; ручной нарезки нет).
+12. Конфиг уже есть (`FxConfig` + `resources/configs/fx/<имя>.tres`): импортёр
+    сам привязывает `frames`. Проигрыватель один — `fx_sprite.tscn`
+    (`play_once`/`play_loop`/`stop`, `finished`, `set_muted`).
+13. Реестр: строка в `Docs/Design/Style_guide/07_effects_animation.md`
+    (раздел F) — без записи эффект в игру не попадает.

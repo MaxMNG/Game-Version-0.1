@@ -54,7 +54,7 @@ func _build_ui() -> void:
 	_glow.antialiased = true
 	_glow.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	_glow.end_cap_mode = Line2D.LINE_CAP_ROUND
-	_glow.modulate = Color(1, 1, 1, 0.3)
+	_glow.modulate = Color(1, 1, 1, Configs.style.glow_alpha)
 	add_child(_glow)
 	move_child(_glow, get_children().find(_links))
 
@@ -77,7 +77,7 @@ func _build_ui() -> void:
 	_history_label.offset_bottom = -24.0
 	_history_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_history_label.add_theme_font_size_override("font_size", Configs.version1.history_font_size)
-	_history_label.modulate = Color(1, 1, 1, Configs.version1.history_opacity)
+	_history_label.modulate = Color(Configs.style.col_text.r, Configs.style.col_text.g, Configs.style.col_text.b, Configs.version1.history_opacity)
 	add_child(_history_label)
 
 	_dialogue = DIALOGUE_SCENE.instantiate() as DialoguePlayer
@@ -109,7 +109,7 @@ func apply_lab_config() -> void:
 		_progress_label.add_theme_font_size_override("font_size", cfg.symbol_font_size)
 	if _history_label != null:
 		_history_label.add_theme_font_size_override("font_size", cfg.history_font_size)
-		_history_label.modulate = Color(1, 1, 1, cfg.history_opacity)
+		_history_label.modulate = Color(Configs.style.col_text.r, Configs.style.col_text.g, Configs.style.col_text.b, cfg.history_opacity)
 	if _links != null:
 		_links.width = cfg.link_width
 	for s: FloatySymbol in _symbols:
@@ -138,9 +138,9 @@ func _update_links() -> void:
 	if _selected.size() < 2:
 		return
 	_links.width = Configs.version1.link_width
-	_links.default_color = Color(0.4, 1.0, 0.4, 1.0)
+	_links.default_color = Configs.style.col_good
 	_glow.width = Configs.version1.link_width * 3.0
-	_glow.default_color = Color(0.4, 1.0, 0.4, 1.0)
+	_glow.default_color = Configs.style.col_good
 	for sym: FloatySymbol in _selected:
 		if is_instance_valid(sym):
 			_links.add_point(sym.position + sym.size / 2.0)
@@ -286,8 +286,8 @@ func _on_word_success() -> void:
 func _on_round_fail(bad: FloatySymbol) -> void:
 	_lock = true
 	Audio.play_sfx(&"fail")
-	_links.default_color = Color(1.0, 0.3, 0.3, 1.0)
-	_glow.default_color = Color(1.0, 0.3, 0.3, 1.0)
+	_links.default_color = Configs.style.col_danger
+	_glow.default_color = Configs.style.col_danger
 	for s: FloatySymbol in _selected:
 		if is_instance_valid(s):
 			s.set_wrong()

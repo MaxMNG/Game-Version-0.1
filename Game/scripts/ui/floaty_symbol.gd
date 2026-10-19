@@ -51,23 +51,23 @@ func set_base_pos(pos: Vector2) -> void:
 	_base_pos = pos
 
 
-## Выделить/снять выделение (зелёное свечение через modulate).
+## Выделить/снять выделение (свечение `good` из палитры).
 func set_selected(value: bool) -> void:
 	selected = value
 	if selected:
-		modulate = Color(0.4, 1.0, 0.4, 1.0)
+		modulate = Configs.style.col_good
 	else:
-		modulate = Color(1, 1, 1, 1)
+		modulate = Configs.style.col_text
 
 
-## Пометить ошибочным (красный, без мигания — мигание делает сцена).
+## Пометить ошибочным (цвет `danger` из палитры).
 func set_wrong() -> void:
-	modulate = Color(1.0, 0.3, 0.3, 1.0)
+	modulate = Configs.style.col_danger
 
 
 ## Белый флеш успеха.
 func flash_success() -> void:
-	modulate = Color(1, 1, 1, 1)
+	modulate = Configs.style.col_text
 
 
 ## Улететь за экран с затуханием и удалиться.

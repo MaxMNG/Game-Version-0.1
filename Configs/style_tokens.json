@@ -1,0 +1,49 @@
+{
+  "_note": "Стартовые значения. Все числа и цвета берутся отсюда (не хардкодить).",
+  "colors": {
+    "void": "#05070D", "bg": "#080D14", "bg_deep_blue": "#0A1837",
+    "surface": "#0F1722", "surface_2": "#182232",
+    "line_dim": "#242F46", "line": "#25495F", "line_hi": "#3A6480",
+    "blue_deep": "#1A5DBA", "blue": "#2792E0", "cyan": "#59D0F3",
+    "text": "#D6E6F2", "text_dim": "#73849B", "text_off": "#4A5568",
+    "safe": "#8FD3F4", "good": "#2EE6B8", "hidden": "#9B6BF2", "danger": "#E83A5C",
+    "safe_dim": "#2B5565", "good_dim": "#124D45", "hidden_dim": "#453C5B", "danger_dim": "#43213A"
+  },
+  "layout": {
+    "base_resolution": [1920, 1080],
+    "steam_deck_resolution": [1280, 800],
+    "safe_margin": 48,
+    "panel_gap": 24
+  },
+  "frame": {
+    "chamfer_size": 16,
+    "chamfer_size_small": 6,
+    "line_width": 2,
+    "line_width_thin": 1,
+    "glow_alpha": 0.35,
+    "glow_radius": 12,
+    "panel_fill_alpha": 0.72
+  },
+  "typography": {
+    "font_heading": "Tektur",
+    "font_body": "Inter",
+    "font_mono": "JetBrains Mono",
+    "size_h1": 48, "size_h2": 32, "size_label": 24, "size_body": 24, "size_caption_min": 20,
+    "tracking_caps": 0.12
+  },
+  "pixel_art": { "portrait_native": [128, 160], "portrait_scale": 2, "texture_filter": "nearest" },
+  "icons": { "grid": 24, "stroke": 2 },
+  "animation": {
+    "panel_open_ms": 280, "panel_close_ms": 180, "hover_ms": 120, "click_ms": 90,
+    "bar_fill_ms": 450, "notification_show_ms": 1800, "fly_to_center_ms": 600,
+    "comment_max_visible": 4
+  },
+  "effects": {
+    "erase_ms": 1800, "audit_ms": 1200, "bug_ms": 500, "emotion_ms": 900, "unlock_ms": 700,
+    "reduce_effects_default": false
+  },
+  "version_style": {
+    "_note": "0 = мягко/пусто/милый, 1 = чётко/плотно/угрожающий",
+    "intensity_by_version": [0.0, 0.08, 0.16, 0.25, 0.33, 0.42, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  }
+}

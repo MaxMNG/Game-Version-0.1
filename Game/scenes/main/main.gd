@@ -26,6 +26,45 @@ func _ready() -> void:
 	Events.minigame_failed.connect(_on_minigame_failed)
 	# Отрисовываем начальное состояние (главное меню).
 	_on_game_state_changed(Game.state)
+	_apply_f6_hook()
+
+
+## Dev-хук визуальной ревизии F6 (только с файлом user://f6_hook.json).
+## Файла нет — обычный запуск. Формат: {"state": "VERSION_1", "seed": 7,
+## "trust": 0, "window": [1920, 1080], "overlay": "wipe"|"upgrade"|"",
+## "upgrade_is_final": false}. В прод-сборке файл не поставляется.
+func _apply_f6_hook() -> void:
+	if not FileAccess.file_exists("user://f6_hook.json"):
+		return
+	var raw: String = FileAccess.get_file_as_string("user://f6_hook.json")
+	var hook: Dictionary = JSON.parse_string(raw) as Dictionary
+	if hook.is_empty():
+		push_error("Main: битый user://f6_hook.json")
+		return
+	if hook.has("seed"):
+		seed(int(hook["seed"]))
+	if hook.has("window"):
+		var w: Array = hook["window"] as Array
+		# Окно применяется после первых кадров: рантайм запуска может
+		# переопределять размер при старте.
+		await get_tree().process_frame
+		await get_tree().process_frame
+		get_window().size = Vector2i(int(w[0]), int(w[1]))
+	Trust.reset()
+	if hook.has("trust"):
+		Trust.change(int(hook["trust"]) - Trust.get_value())
+	if hook.has("upgrade_is_final"):
+		Game.upgrade_is_final = bool(hook["upgrade_is_final"])
+	if hook.has("state"):
+		var target: int = Game.State.get(String(hook["state"]), -1)
+		if target >= 0:
+			Game.change_state(target as Game.State)
+	if hook.has("overlay"):
+		match String(hook["overlay"]):
+			"wipe":
+				_show_scene(WIPE_SCENE)
+			"upgrade":
+				_show_scene(UPGRADE_SCENE)
 
 
 func _clear_container() -> void:

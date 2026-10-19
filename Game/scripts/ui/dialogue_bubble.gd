@@ -1,9 +1,9 @@
 class_name DialogueBubble
-extends PanelContainer
+extends ChamferPanel
 ## Текстовый бабл с эффектом «печатающегося» текста.
 ##
-## Показывает одну реплику: имя спикера + постепенно печатающийся текст.
-## Пропуск — через skip(): допечатывает мгновенно, повторный вызов — сигнал.
+## Рамка — срез по гайду (наследуется от ChamferPanel):
+## цвет рамки/текста подтягивается по говорящему (mom/dad из конфига).
 
 ## Печать текущей реплики завершена.
 signal line_finished
@@ -57,7 +57,7 @@ func show_line(speaker_id: StringName, text: String) -> void:
 	visible = true
 
 
-## Подтянуть цвет рамки/текста по говорящему (mom/dad).
+## Подтянуть цвет рамки/текста по говорящему (mom/dad из палитры).
 func _apply_speaker_color(speaker_id: StringName) -> void:
 	if Configs.comment == null:
 		return
@@ -66,15 +66,12 @@ func _apply_speaker_color(speaker_id: StringName) -> void:
 		col = Configs.comment.dad_color
 	_text_label.add_theme_font_size_override("font_size", Configs.comment.font_size)
 	_speaker_label.add_theme_color_override("font_color", col)
-	var style: StyleBoxFlat = get_theme_stylebox("panel") as StyleBoxFlat
-	if style == null:
-		style = StyleBoxFlat.new()
-		style.bg_color = Color(0.02, 0.03, 0.06, 0.92)
-		style.set_corner_radius_all(Configs.comment.corner_radius)
-		style.set_border_width_all(Configs.comment.border_width)
-		add_theme_stylebox_override("panel", style)
-	style.border_color = col
-	_text_label.add_theme_color_override("font_color", col)
+	# Рамка и заливка — через ChamferPanel (срез по гайду, цвета из Configs.style).
+	frame_color = col
+	fill_color = Color(Configs.style.col_surface.r, Configs.style.col_surface.g, Configs.style.col_surface.b, Configs.style.panel_fill_alpha)
+	show_focus_marks = false
+	queue_redraw()
+	_text_label.add_theme_color_override("font_color", Configs.style.col_text)
 
 
 ## Пропуск: если печатается — допечатать, иначе сообщить что готово к следующей.

@@ -64,6 +64,9 @@ var audio: AudioConfig
 ## Конфиг слоя scanlines (версия 0.2).
 var scanline: ScanlineConfig
 
+## Конфиг визуального стиля (токены гайда).
+var style: StyleConfig
+
 
 func _ready() -> void:
 	balance = load("res://resources/configs/balance.tres") as BalanceConfig
@@ -145,3 +148,7 @@ func _ready() -> void:
 	scanline = load("res://resources/configs/scanline.tres") as ScanlineConfig
 	if scanline == null:
 		push_error("Configs: не удалось загрузить resources/configs/scanline.tres")
+
+	style = load("res://resources/configs/style.tres") as StyleConfig
+	if style == null:
+		push_error("Configs: не удалось загрузить resources/configs/style.tres")

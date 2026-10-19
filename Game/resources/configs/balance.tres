@@ -9,3 +9,5 @@ trust_min = -100
 trust_max = 100
 wipes_per_run_limit = 10
 trust_delta_duration = 1.5
+show_numbers = true
+trust_bar_segments = 20

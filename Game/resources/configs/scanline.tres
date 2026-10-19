@@ -4,3 +4,5 @@
 
 [resource]
 script = ExtResource("1_scn")
+# F6: приглушены — CRT не должен спорить с тонкими линиями UI (гайд 04).
+intensity = 0.1

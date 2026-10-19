@@ -4,5 +4,6 @@
 
 [node name="FloatySymbol" type="Button"]
 custom_minimum_size = Vector2(72, 72)
+theme_type_variation = &"TileButton"
 text = "A"
 script = ExtResource("1_sym")
